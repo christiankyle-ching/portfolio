@@ -1,0 +1,759 @@
+// #region Global Variables
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+@import url("https://fonts.googleapis.com/css?family=Inter");
+
+$colors: (
+  "black": #030303,
+  "blue": #1e2fc7,
+  "orange": #d47f00,
+  "orange-shade": #945a02,
+  "teal": #299a9a,
+  "teal-shade": #0b6d6d,
+);
+
+$opacity: (
+  "blur": 0.7,
+  "focused": 1,
+);
+
+$shadow: rgba(0, 0, 0, 0.16);
+
+$screen-sm: 576px;
+$screen-md: 768px;
+
+$progress: (
+  "javascript": 60%,
+  "sql": 50%,
+  "python": 40%,
+  "csharp": 30%,
+  "java": 20%,
+);
+// #endregion
+
+// #region Global Default Styles and Fixes
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+nav {
+  padding: 15px;
+  position: relative;
+
+  .float-left {
+    display: block;
+    position: absolute;
+  }
+
+  > h1 {
+    text-align: center;
+  }
+
+  .back-button {
+    content: url(../images/arrow-back.svg);
+    max-width: 30px;
+  }
+}
+
+body {
+  font-family: "Montserrat", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  background-color: map-get($colors, "black");
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+button {
+  // Reset values
+  color: map-get($colors, "teal");
+  font-weight: 500;
+  background: none;
+  border: none;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-size: 0.75em;
+  cursor: pointer;
+
+  // Custom Style
+  padding: 0 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 15px;
+  border: 2px map-get($colors, "teal") solid;
+  outline: none;
+}
+
+// #endregion
+
+.container {
+  width: 100%;
+  height: 100vh;
+  background-color: map-get($colors, "black");
+
+  display: flex;
+  flex-flow: column wrap;
+  overflow: hidden;
+}
+
+// #region ---------- INDEX ----------
+
+#index-body {
+  font-size: 0.7em;
+}
+
+// #region Flexbox
+[class*="box-"] {
+  width: 50%;
+}
+
+.box-1 {
+  background-color: map-get($colors, "blue");
+  flex: 1 1 33%;
+}
+
+.box-2 {
+  flex: 2 2 66%;
+}
+
+.box-3 {
+  flex: 1 1 33%;
+}
+
+.box-4 {
+  background-color: map-get($colors, "teal");
+  flex: 1 1 33%;
+}
+
+.box-5 {
+  background-color: map-get($colors, "orange");
+  flex: 1 1 33%;
+}
+
+@media (min-width: $screen-sm) {
+  #index-body {
+    font-size: 1em !important;
+  }
+}
+
+@media (min-width: $screen-md) {
+  #index-body {
+    font-size: 1.2em !important;
+  }
+
+  [class*="box-"] {
+    width: 33.33% !important;
+  }
+
+  .box-1,
+  .box-2,
+  .box-3,
+  .box-4,
+  .box-5 {
+    flex: 1 1 50%;
+  }
+
+  .box-3 {
+    order: 3;
+  }
+
+  .box-4 {
+    order: 2;
+  }
+
+  .box-5 {
+    order: 4;
+  }
+
+  .box-2 {
+    order: 5;
+  }
+}
+// #endregion
+
+// #region Box Styles
+// Section - Name
+.box-1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+
+  .name {
+    font-size: 2em;
+  }
+
+  .dot {
+    font-size: 2em;
+    color: map-get($colors, "orange");
+  }
+}
+
+// Section - Desc
+.box-3 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  .text-desc {
+    padding-right: 1em;
+    padding-top: 2em;
+
+    > h1 {
+      text-align: right;
+      font-weight: normal;
+
+      .text-desc-highlight {
+        font-weight: bold;
+        font-size: 1.4em;
+      }
+    }
+  }
+
+  position: relative;
+  overflow: hidden;
+  .desc-bg {
+    font-size: 8em;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    opacity: 0.15;
+    position: absolute;
+    top: 0;
+    right: -10%;
+  }
+}
+
+// Section - Works
+.box-4 {
+  display: flex;
+  flex-flow: column nowrap;
+  z-index: 0;
+  .col {
+    flex: 1 1 50%;
+  }
+
+  .upper-box {
+    z-index: 2;
+    background-color: map-get($colors, "teal-shade");
+    box-shadow: 0 -5px 6px $shadow;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    > h1 {
+      font-size: 2.4em;
+      letter-spacing: 0.05em;
+      opacity: map-get($opacity, "blur");
+    }
+  }
+
+  // Works Image
+  position: relative;
+  img {
+    content: url('../images/rocket.svg');
+    position: absolute;
+    left: 50%;
+    margin-left: -25%;
+    top: 40%;
+    margin-top: -25%;
+    max-width: 50%;
+    z-index: 1;
+    opacity: map-get($opacity, "blur");
+  }
+
+  cursor: pointer;
+  &:hover {
+    .upper-box {
+      > h1 {
+        transition: 0.1s opacity ease-in;
+        opacity: map-get($opacity, "focused");
+      }
+    }
+
+    img {
+      top: 30% !important;
+      transition: 0.1s all ease-in, 0.1s opacity ease-in;
+      opacity: map-get($opacity, "focused");
+    }
+  }
+}
+
+// Section - Background
+.box-5 {
+  display: flex;
+  z-index: 0;
+
+  .col {
+    flex: 1 1 50%;
+  }
+
+  .upper-box {
+    z-index: 2;
+    background-color: map-get($colors, "orange-shade");
+    box-shadow: -5px 0 6px $shadow;
+    writing-mode: vertical-lr;
+
+    display: flex;
+    justify-content: center;
+    > h1 {
+      font-size: 1.6em;
+      letter-spacing: 0.05em;
+      align-self: center;
+      opacity: map-get($opacity, "blur");
+
+      transform: rotate(180deg);
+    }
+  }
+
+  // Background Image
+  position: relative;
+  img {
+    content: url('../images/rocket.svg');
+    position: absolute;
+    left: 40%;
+    margin-left: -25%;
+    top: 50%;
+    margin-top: -25%;
+    max-width: 50%;
+    z-index: 1;
+    opacity: map-get($opacity, "blur");
+  }
+
+  cursor: pointer;
+  &:hover {
+    .upper-box {
+      > h1 {
+        transition: 0.1s opacity ease-in;
+        opacity: map-get($opacity, "focused");
+      }
+    }
+
+    img {
+      left: 30% !important;
+      transition: 0.1s all ease-in, 0.1s opacity ease-in;
+      opacity: map-get($opacity, "focused");
+    }
+  }
+}
+
+// Section - Skills
+.box-2 {
+  display: flex;
+  z-index: 5;
+  overflow: hidden;
+  background-color: map-get($colors, "black");
+  .col-1 {
+    writing-mode: vertical-lr;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    > h1 {
+      // padding-left: 0.2em;
+      font-size: 2.4em;
+      letter-spacing: 0.2em;
+      opacity: map-get($opacity, "blur");
+    }
+  }
+
+  .col-2 {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    ul {
+      list-style: none;
+      width: 90%;
+      height: 90%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+
+      li {
+        .skill-name {
+          font-size: 1.2em;
+          padding-bottom: 0.4em;
+        }
+
+        .full-bar,
+        .progress-bar {
+          height: 0.8em;
+          background-color: map-get($colors, "blue");
+          border-radius: 0.8em;
+        }
+
+        .progress-bar-container {
+          .progress-bar {
+            background-color: map-get($colors, "orange");
+            box-shadow: 0 5px 6px $shadow;
+          }
+        }
+      }
+    }
+  }
+}
+// #endregion
+
+// #region Real ProgressBar Values
+.javascript {
+  .progress-bar-container {
+    width: map-get($progress, "javascript") !important;
+  }
+}
+.sql {
+  .progress-bar-container {
+    width: map-get($progress, "sql") !important;
+  }
+}
+.python {
+  .progress-bar-container {
+    width: map-get($progress, "python") !important;
+  }
+}
+.csharp {
+  .progress-bar-container {
+    width: map-get($progress, "csharp") !important;
+  }
+}
+.java {
+  .progress-bar-container {
+    width: map-get($progress, "java") !important;
+  }
+}
+// #endregion
+
+// #region Intro Animations
+
+// Section - Name
+.box-1 {
+  // set initial opacity
+  .section-1,
+  .section-2 {
+    opacity: 0;
+  }
+
+  .section-1 {
+    animation: fade-to-right 0.5s forwards 0.1s ease-out;
+  }
+  .section-2 {
+    animation: fade-to-right 0.5s forwards 0s ease-out;
+  }
+}
+
+// Section - Desc
+.box-3 {
+  // set initial opacity
+  .desc-bg,
+  .text-desc {
+    opacity: 0;
+  }
+
+  .desc-bg {
+    animation: fade-to-left-2 0.5s forwards 0.1s ease-out;
+  }
+  .text-desc {
+    animation: fade-to-left 0.5s forwards 0s ease-out;
+  }
+}
+
+// Section - Works
+.box-4 {
+  animation: slide-up 0.5s forwards 0s ease-out;
+
+  .upper-box {
+    animation: slide-up 0.5s forwards 0s ease-in;
+  }
+}
+
+// Section - Background
+.box-5 {
+  animation: slide-left 0.5s forwards 0s ease-out;
+
+  .upper-box {
+    animation: slide-left 0.5s forwards 0s ease-in;
+  }
+}
+
+// Section - Skill Set
+.box-2 {
+  .col-1 {
+    animation: fade-to-right 0.5s forwards 0s ease-out;
+  }
+
+  .col-2 {
+    // set initial opacity
+    opacity: 0;
+    animation: fade-to-right 0.5s forwards 0.4s ease-out;
+
+    .progress-bar {
+      width: 0;
+      animation: expand-full-width 0.6s forwards 1s ease-out;
+    }
+  }
+}
+
+// #endregion
+
+// #endregion
+
+// #region ---------- WORKS ----------
+
+#works-body {
+  p,
+  button,
+  .img-label {
+    font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+}
+
+.w-col {
+  display: flex;
+  flex-direction: column;
+  padding: 1em 0;
+
+  .w-col-slider {
+    overflow: hidden;
+
+    img {
+      max-width: 80vw;
+      max-height: 50vh;
+    }
+
+    .swiper-wrapper:hover {
+      cursor: grab;
+    }
+
+    .swiper-wrapper:active {
+      cursor: grabbing;
+    }
+
+    .swiper-container {
+      width: 100%;
+      height: 100% !important;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      padding-bottom: 30px;
+      height: unset !important;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      > img {
+        border-radius: 20px 50px;
+        background: linear-gradient(145deg, #090909, #070707);
+        box-shadow: 20px 20px 60px #070707, -20px -20px 60px #090909;
+
+        max-width: 75vw;
+      }
+
+      .img-label {
+        padding-top: 1em;
+      }
+    }
+  }
+
+  .w-col-desc {
+    flex: 1;
+    padding: 1em;
+    overflow: hidden;
+
+    text-align: center;
+
+    .w-stack {
+      display: block;
+      padding: 0.3em 0;
+    }
+
+    .w-p {
+      padding-bottom: 1em;
+      line-height: 1.3em;
+
+      transition: transform 0.6s ease-in-out;
+      transform: translateX(100%);
+      height: 0;
+
+      > p {
+        transition: opacity 0.6s ease-out;
+        opacity: 0;
+        padding: 1em 0;
+
+        > ul {
+          list-style-type: decimal;
+          list-style-position: inside;
+          padding-top: 1em;
+          font-size: 0.8em;
+        }
+      }
+    }
+  }
+}
+
+.show-p {
+  transform: translateX(0) !important;
+  height: auto !important;
+
+  > p {
+    opacity: 1 !important;
+  }
+}
+
+.swiper-pagination-bullet {
+  background-color: map-get($colors, "teal") !important;
+}
+
+// #region Links Style
+.w-links {
+  text-align: center;
+  list-style: none;
+
+  li {
+    display: inline-block;
+    margin-right: 1em;
+  }
+
+  li:last-child {
+    margin-right: 0 !important;
+  }
+
+  .github {
+    content: url("../images/github.svg");
+    fill: white !important;
+    width: 30px;
+    height: 30px;
+  }
+
+  .open {
+    content: url("../images/github.svg");
+    fill: white !important;
+    width: 30px;
+    height: 30px;
+  }
+}
+
+// #endregion
+
+@media (min-width: $screen-md) {
+  .w-col {
+    flex-direction: row !important;
+
+    .w-col-slider {
+      width: 50% !important;
+    }
+
+    .w-col-desc {
+      text-align: left;
+    }
+
+    .w-links {
+      text-align: left !important;
+    }
+
+    .swiper-slide {
+      max-width: 50vw !important;
+      
+      > img {
+        max-width: 40vw !important;
+      }
+    }
+  }
+
+  .w-col:nth-of-type(even) {
+    .w-col-slider {
+      order: 2;
+    }
+    .w-col-desc {
+      text-align: right;
+    }
+
+    .w-links {
+      text-align: right !important;
+    }
+  }
+
+  .w-p {
+    transition: none !important;
+    transform: scaleY(1) !important;
+    height: auto !important;
+
+    > p {
+      opacity: 1 !important;
+    }
+  }
+
+  .w-toggle {
+    display: none !important;
+  }
+}
+
+// #endregion
+
+// #region Keyframes
+@keyframes fade-to-right {
+  from {
+    opacity: 0;
+    transform: translateX(-2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-to-left {
+  from {
+    opacity: 0;
+    transform: translateX(2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-to-left-2 {
+  from {
+    opacity: 0;
+    transform: translateX(2rem);
+  }
+  to {
+    opacity: 0.15;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-left {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes expand-full-width {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+// #endregion
