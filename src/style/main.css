@@ -255,7 +255,6 @@ button {
 }
 
 .box-4 img {
-  content: url("../images/rocket.svg");
   position: absolute;
   left: 50%;
   margin-left: -25%;
@@ -322,7 +321,6 @@ button {
 }
 
 .box-5 img {
-  content: url("../images/rocket.svg");
   position: absolute;
   left: 40%;
   margin-left: -25%;
