@@ -37,6 +37,12 @@ a {
   color: unset;
 }
 
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.3;
+}
+
 button {
   color: #299a9a;
   font-weight: 500;
@@ -612,7 +618,7 @@ button {
   -webkit-transition: opacity 0.6s ease-out;
   transition: opacity 0.6s ease-out;
   opacity: 0;
-  padding: 1em 0;
+  padding: 0 0 1em 0;
 }
 
 .w-col .w-col-desc .w-p > p > ul {
@@ -620,6 +626,10 @@ button {
   list-style-position: inside;
   padding-top: 1em;
   font-size: 0.8em;
+}
+
+.w-col .w-col-desc .w-p > p a {
+  text-decoration: underline;
 }
 
 .show-p {
