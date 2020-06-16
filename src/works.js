@@ -1,6 +1,3 @@
-// Main CSS import
-require("./style/main.css");
-
 // ScrollReveal import
 import ScrollReveal from "scrollreveal";
 
@@ -117,11 +114,11 @@ var works = [
         This is a group project that I made together with a team, as a requirement for one of my database-related subjects on my 2nd year. Along with a planned database schema, an interview with Edzer Music Studio, this WPF application (C# and MySQL served on XAMPP) features a scheduling system with fees computation based on hours and intrument rentals, intrument management, and a user panel for the administrator to assign other users with less privileges to the system.
     `,
     features: [
-      "Schedule management that enables system user to create, update, and delete schedule records",
-      "Notifies the system user (admin or an employee), on upcoming schedules about to start",
-      "Able to calculate rental fee based on duration of rent, as well as add-ons (instrument rentals)",
-      "Management of instruments available for rental",
-      "User account control with two (2) levels of privileges (administrator and basic user).",
+        "Schedule management that enables system user to create, update, and delete schedule records",
+        "Notifies the system user (admin or an employee), on upcoming schedules about to start",
+        "Able to calculate rental fee based on duration of rent, as well as add-ons (instrument rentals)",
+        "Management of instruments available for rental",
+        "User account control with two (2) levels of privileges (administrator and basic user).",
     ],
     prefix: "edzer",
     images: [
@@ -164,116 +161,114 @@ var works = [
 var worksDiv = document.querySelector(".works");
 
 if ("content" in document.createElement("template")) {
-  if (document.querySelector("#work-template") != undefined) {
-    var template = document.querySelector("#work-template");
+  var template = document.querySelector("#work-template");
 
-    works.forEach((e) => {
-      // Clone template content
-      let row = template.content.cloneNode(true);
+  works.forEach((e) => {
+    // Clone template content
+    let row = template.content.cloneNode(true);
 
-      // Get swiper-container
-      let swiperContainer = row.querySelector(".swiper-container");
-      // Inject {prefix}-slider class for identifying slider (Swiper.js requirement)
-      swiperContainer.classList.add(`${e.prefix}-slider`);
+    // Get swiper-container
+    let swiperContainer = row.querySelector(".swiper-container");
+    // Inject {prefix}-slider class for identifying slider (Swiper.js requirement)
+    swiperContainer.classList.add(`${e.prefix}-slider`);
 
-      // Get swiperWrapper
-      let swiperWrapper = swiperContainer.querySelector(".swiper-wrapper");
+    // Get swiperWrapper
+    let swiperWrapper = swiperContainer.querySelector(".swiper-wrapper");
 
-      // Create slide template
-      let tmpSlide = document.createElement("div");
-      tmpSlide.classList.add("swiper-slide");
-      let imgObj = document.createElement("img");
-      let imgLabel = document.createElement("div");
-      imgLabel.classList.add("img-label");
-      tmpSlide.appendChild(imgObj);
-      tmpSlide.appendChild(imgLabel);
+    // Create slide template
+    let tmpSlide = document.createElement("div");
+    tmpSlide.classList.add("swiper-slide");
+    let imgObj = document.createElement("img");
+    let imgLabel = document.createElement("div");
+    imgLabel.classList.add("img-label");
+    tmpSlide.appendChild(imgObj);
+    tmpSlide.appendChild(imgLabel);
 
-      // For each image, clone slide template and assign values
-      e.images.forEach((img) => {
-        // Clone swiper slide template
-        let slide = tmpSlide.cloneNode(true);
+    // For each image, clone slide template and assign values
+    e.images.forEach((img) => {
+      // Clone swiper slide template
+      let slide = tmpSlide.cloneNode(true);
 
-        // Get img tag and assign src
-        let divImg = slide.querySelector("img");
-        divImg.src = img.url;
+      // Get img tag and assign src
+      let divImg = slide.querySelector("img");
+      divImg.src = img.url;
 
-        // Get img-label and assign label
-        let divLabel = slide.querySelector(".img-label");
-        divLabel.innerText = img.label;
+      // Get img-label and assign label
+      let divLabel = slide.querySelector(".img-label");
+      divLabel.innerText = img.label;
 
-        // Append to swiper wrapper
-        swiperWrapper.appendChild(slide);
-      });
-
-      // Inject pagination class
-      let pagination = swiperContainer.querySelector(".swiper-pagination");
-      pagination.classList.add(`${e.prefix}-pagination`);
-
-      // Inject Title, Stack
-      let title = row.querySelector(".w-title");
-      title.innerText = e.title;
-      let stack = row.querySelector(".w-stack");
-      stack.innerText = `${e.stack} | ${e.date_dev}`;
-
-      // Inject id={prefix}-p, Description
-      let divDesc = row.querySelector(".w-p");
-      let divDescP = divDesc.querySelector("p");
-      divDescP.innerHTML = e.description;
-
-      // Inject features list
-      if (e.features) {
-        let featuresList = document.createElement("ul");
-
-        e.features.forEach((f) => {
-          let featureItem = document.createElement("li");
-          featureItem.innerText = f;
-          featuresList.append(featureItem);
-        });
-
-        divDescP.appendChild(featuresList);
-      }
-
-      // Get ul links
-      let divLinks = row.querySelector(".w-links");
-
-      // Create li link template
-      let tmpLinkItem = document.createElement("li");
-      tmpLinkItem
-        .appendChild(document.createElement("a"))
-        .appendChild(document.createElement("img"));
-
-      // For each link, clone link item template then append to divLinks
-      e.links.forEach((l) => {
-        // Clone template first
-        let linkItem = tmpLinkItem.cloneNode(true);
-
-        // Inject Links with url and class (for image)
-        linkItem.querySelector("a").href = l.url;
-        if (l.disabled) linkItem.querySelector("a").classList.add("disabled");
-        linkItem.querySelector("img").classList.add(l.site);
-
-        divLinks.appendChild(linkItem);
-      });
-
-      // Show / Hide Button
-      // let description = row.querySelector(`#${e.prefix}-p`);
-      let toggle = row.querySelector(".w-toggle");
-
-      toggle.addEventListener("click", () => {
-        if (divDesc.classList.contains("show-p")) {
-          divDesc.classList.remove("show-p");
-          toggle.innerText = "Show More";
-        } else {
-          divDesc.classList.add("show-p");
-          toggle.innerText = "Hide";
-        }
-      });
-
-      console.log(row);
-
-      worksDiv.appendChild(row);
+      // Append to swiper wrapper
+      swiperWrapper.appendChild(slide);
     });
-  }
+
+    // Inject pagination class
+    let pagination = swiperContainer.querySelector(".swiper-pagination");
+    pagination.classList.add(`${e.prefix}-pagination`);
+
+    // Inject Title, Stack
+    let title = row.querySelector(".w-title");
+    title.innerText = e.title;
+    let stack = row.querySelector(".w-stack");
+    stack.innerText = `${e.stack} | ${e.date_dev}`;
+
+    // Inject id={prefix}-p, Description
+    let divDesc = row.querySelector(".w-p");
+    let divDescP = divDesc.querySelector("p");
+    divDescP.innerHTML = e.description;
+
+    // Inject features list
+    if (e.features) {
+      let featuresList = document.createElement("ul");
+
+      e.features.forEach((f) => {
+        let featureItem = document.createElement("li");
+        featureItem.innerText = f;
+        featuresList.append(featureItem);
+      });
+
+      divDescP.appendChild(featuresList);
+    }
+
+    // Get ul links
+    let divLinks = row.querySelector(".w-links");
+
+    // Create li link template
+    let tmpLinkItem = document.createElement("li");
+    tmpLinkItem
+      .appendChild(document.createElement("a"))
+      .appendChild(document.createElement("img"));
+
+    // For each link, clone link item template then append to divLinks
+    e.links.forEach((l) => {
+      // Clone template first
+      let linkItem = tmpLinkItem.cloneNode(true);
+
+      // Inject Links with url and class (for image)
+      linkItem.querySelector("a").href = l.url;
+      if (l.disabled) linkItem.querySelector("a").classList.add('disabled');
+      linkItem.querySelector("img").classList.add(l.site);
+
+      divLinks.appendChild(linkItem);
+    });
+
+    // Show / Hide Button
+    // let description = row.querySelector(`#${e.prefix}-p`);
+    let toggle = row.querySelector(".w-toggle");
+
+    toggle.addEventListener("click", () => {
+      if (divDesc.classList.contains("show-p")) {
+        divDesc.classList.remove("show-p");
+        toggle.innerText = "Show More";
+      } else {
+        divDesc.classList.add("show-p");
+        toggle.innerText = "Hide";
+      }
+    });
+
+    console.log(row);
+
+    worksDiv.appendChild(row);
+  });
 } else {
   // Callback function
 }
@@ -310,4 +305,4 @@ var edzerSwiper = new Swiper(".edzer-slider", {
 });
 
 // init ScrollReveal components
-ScrollReveal({ reset: true }).reveal(".w-col");
+ScrollReveal({ reset: true }).reveal('.w-col');
