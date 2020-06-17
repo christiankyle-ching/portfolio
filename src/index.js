@@ -1,9 +1,6 @@
 // Main CSS import
 require("./style/main.css");
 
-// ScrollReveal import
-import ScrollReveal from "scrollreveal";
-
 // Swiper JS import
 import Swiper from "swiper";
 require("swiper/css/swiper.min.css");
@@ -161,7 +158,7 @@ var works = [
 ];
 
 // Check if template is supported
-var worksDiv = document.querySelector(".works");
+var worksDiv = document.querySelector("#works");
 
 if ("content" in document.createElement("template")) {
   if (document.querySelector("#work-template") != undefined) {
@@ -273,6 +270,7 @@ if ("content" in document.createElement("template")) {
 
       worksDiv.appendChild(row);
     });
+
   }
 } else {
   // Callback function
@@ -309,5 +307,3 @@ var edzerSwiper = new Swiper(".edzer-slider", {
   },
 });
 
-// init ScrollReveal components
-ScrollReveal({ reset: true }).reveal(".w-col");
