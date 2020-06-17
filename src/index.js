@@ -24,13 +24,23 @@ import edzer_instruments from "./images/edzer/instruments.png";
 import edzer_login from "./images/edzer/login.png";
 import edzer_schedules from "./images/edzer/schedules.png";
 
+// SchoolCMS
+import schoolcms_login from './images/schoolcms/login.png';
+import schoolcms_courses from './images/schoolcms/courses.png';
+import schoolcms_lessons from './images/schoolcms/lessons.png';
+import schoolcms_subjects from './images/schoolcms/subjects.png';
+
 var works = [
   {
     title: "Budget Planner",
     date_dev: "2020",
     stack: "Ionic, Angular",
     description: `
-        A simple budget planner that I made using Ionic/Angular stack. While starting to learn about Ionic, it has come to my idea to make a relatively simple budget planner/tracking app targeted for highschool students that hopefully, they can use to track their allowances and expenses, and might encourage them to save some of their money.
+          A simple budget planner that I made using <a href="https://ionicframework.com/" class="underline">Ionic</a>
+          / <a href="https://angular.io/" class="underline">Angular</a> stack. While starting to learn about Ionic, 
+          it has come to my idea to make a relatively simple budget planner/tracking app targeted for highschool
+          students that hopefully, they can use to track their allowances and expenses, and might encourage them
+          to save some of their money.
         `,
     features: [
       "Day-to-day tracking of allowances and expenses",
@@ -75,6 +85,11 @@ var works = [
         url: "#",
         disabled: true,
       },
+      {
+        site: "open",
+        url: "#",
+        disabled: true,
+      },
     ],
   },
   {
@@ -82,7 +97,11 @@ var works = [
     date_dev: "2020",
     stack: "Django, Python",
     description: `
-        A yet another simple website using Django/Python stack. As I have been eager to learn Python, I have stumbled upon the Django framework and has integrated it with Google Drive API to host uploaded files by the users.
+        A yet another simple website using <a href="https://www.djangoproject.com/" class="underline">Django</a>
+        / <a href="https://www.python.org/" class="underline">Python</a> stack. As I have been eager to learn Python, 
+        I have stumbled upon the Django framework and has integrated it with 
+        <a href="https://django-googledrive-storage.readthedocs.io/en/latest/" class="underline">Google Drive API</a> 
+        to host uploaded files by the users.
     `,
     features: [
       "Has basic user registration",
@@ -94,8 +113,20 @@ var works = [
     prefix: "schoolcms",
     images: [
       {
-        url: edzer_dashboard,
-        label: "TEMP",
+        url: schoolcms_login,
+        label: "Login Page",
+      },
+      {
+        url: schoolcms_courses,
+        label: "Responsive design",
+      },
+      {
+        url: schoolcms_lessons,
+        label: "Download lessons hosted online",
+      },
+      {
+        url: schoolcms_subjects,
+        label: "View your subjects depending on your course",
       },
     ],
     links: [
@@ -111,7 +142,11 @@ var works = [
     date_dev: "2019",
     stack: "C#, MySQL",
     description: `
-        This is a group project that I made together with a team, as a requirement for one of my database-related subjects on my 2nd year. Along with a planned database schema, an interview with Edzer Music Studio, this WPF application (C# and MySQL served on XAMPP) features a scheduling system with fees computation based on hours and intrument rentals, intrument management, and a user panel for the administrator to assign other users with less privileges to the system.
+        This is a group project that I made together with a team, as a requirement for one of my 
+        database-related subjects on my 2nd year. Along with a planned database schema, an interview 
+        with <a href="https://www.facebook.com/EDZERSTUDIO/" class="underline">Edzer Music Studio</a>, this WPF application (C# and MySQL served on XAMPP) features a scheduling 
+        system with fees computation based on hours and intrument rentals, intrument management, and a 
+        user panel for the administrator to assign other users with less privileges to the system.
     `,
     features: [
       "Schedule management that enables system user to create, update, and delete schedule records",
@@ -161,7 +196,7 @@ var works = [
 var worksDiv = document.querySelector("#works");
 
 if ("content" in document.createElement("template")) {
-  if (document.querySelector("#work-template") != undefined) {
+  if (document.querySelector("#work-template") != null) {
     var template = document.querySelector("#work-template");
 
     works.forEach((e) => {
@@ -270,7 +305,6 @@ if ("content" in document.createElement("template")) {
 
       worksDiv.appendChild(row);
     });
-
   }
 } else {
   // Callback function
@@ -306,4 +340,3 @@ var edzerSwiper = new Swiper(".edzer-slider", {
     type: "bullets",
   },
 });
-

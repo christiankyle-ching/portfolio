@@ -47,6 +47,9 @@ module.exports = {
       template: './src/works.html',
       filename: './works.html'
     }),
-  ]
+  ],
+
+  devtool: 'inline-source-map',
+  
 
 };

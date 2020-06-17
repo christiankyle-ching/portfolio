@@ -43,8 +43,29 @@ a.disabled {
   opacity: 0.3;
 }
 
+a.underline {
+  display: inline-block;
+  color: #84c8ff;
+}
+
+a.underline:after {
+  content: '';
+  width: 0px;
+  height: 2px;
+  display: block;
+  background: #84c8ff;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  -webkit-animation: expand-full-width 600ms 2 0s alternate;
+          animation: expand-full-width 600ms 2 0s alternate;
+}
+
+a.underline:hover:after {
+  width: 100%;
+}
+
 button {
-  color: #299a9a;
+  color: #05828e;
   font-weight: 500;
   background: none;
   border: none;
@@ -55,7 +76,7 @@ button {
   height: 30px;
   line-height: 30px;
   border-radius: 15px;
-  border: 2px #299a9a solid;
+  border: 2px #05828e solid;
   outline: none;
 }
 
@@ -101,7 +122,7 @@ button {
 }
 
 .box-4 {
-  background-color: #299a9a;
+  background-color: #05828e;
   -webkit-box-flex: 1;
       -ms-flex: 1 1 33%;
           flex: 1 1 33%;
@@ -211,8 +232,7 @@ button {
 
 .box-3 .desc-bg {
   font-size: 8em;
-  font-weight: 800;
-  letter-spacing: 0.05em;
+  font-weight: 1000;
   opacity: 0.15;
   position: absolute;
   top: 0;
@@ -240,7 +260,7 @@ button {
 
 .box-4 .upper-box {
   z-index: 2;
-  background-color: #0b6d6d;
+  background-color: #044e55;
   -webkit-box-shadow: 0 -5px 6px rgba(0, 0, 0, 0.16);
           box-shadow: 0 -5px 6px rgba(0, 0, 0, 0.16);
   display: -webkit-box;
@@ -603,7 +623,7 @@ button {
 }
 
 .w-col .w-col-desc .w-p {
-  padding-bottom: 1em;
+  padding: 0.5em 0 1em 0;
   line-height: 1.3em;
   -webkit-transition: -webkit-transform 0.6s ease-in-out;
   transition: -webkit-transform 0.6s ease-in-out;
@@ -628,10 +648,6 @@ button {
   font-size: 0.8em;
 }
 
-.w-col .w-col-desc .w-p > p a {
-  text-decoration: underline;
-}
-
 .show-p {
   -webkit-transform: translateX(0) !important;
           transform: translateX(0) !important;
@@ -643,7 +659,7 @@ button {
 }
 
 .swiper-pagination-bullet {
-  background-color: #299a9a !important;
+  background-color: #05828e !important;
 }
 
 .w-links {
@@ -662,14 +678,12 @@ button {
 
 .w-links .github {
   content: url("../images/github.svg");
-  fill: white !important;
   width: 30px;
   height: 30px;
 }
 
 .w-links .open {
-  content: url("../images/github.svg");
-  fill: white !important;
+  content: url("../images/open.svg");
   width: 30px;
   height: 30px;
 }
