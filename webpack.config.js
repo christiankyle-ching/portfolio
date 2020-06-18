@@ -15,7 +15,7 @@ module.exports = {
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.(png|svg)$/i,
+        test: /\.(png|svg|jpg)$/i,
         use: [
           {
             loader: 'file-loader',
@@ -47,9 +47,11 @@ module.exports = {
       template: './src/works.html',
       filename: './works.html'
     }),
+    new HtmlWebpackPlugin({
+      template: './src/about.html',
+      filename: './about.html'
+    }),
   ],
 
   devtool: 'inline-source-map',
-  
-
 };
