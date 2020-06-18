@@ -254,7 +254,7 @@ if ("content" in document.createElement("template")) {
 
       // Inject features list
       if (e.features) {
-        let featuresList = document.createElement("ul");
+        let featuresList = document.createElement("ol");
 
         e.features.forEach((f) => {
           let featureItem = document.createElement("li");
@@ -340,3 +340,20 @@ var edzerSwiper = new Swiper(".edzer-slider", {
     type: "bullets",
   },
 });
+
+
+var selfSwiper = new Swiper('.self-swiper', {
+  pagination: {
+    el: '.self-swiper-pagination',
+    type: 'bullets'
+  },
+  initialSlide: 1,
+  breakpoints: {
+    576: {
+      slidesPerView: 2,
+    },
+    768: {
+      slidesPerView: 3,
+    }
+  }
+})
