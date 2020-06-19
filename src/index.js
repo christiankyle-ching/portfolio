@@ -192,16 +192,53 @@ var works = [
   },
 ];
 
-// Check if template is supported
-var worksDiv = document.querySelector("#works");
+var skills = [
+  {
+    language: "javascript",
+    name: "Javascript",
+    progress: 50,
+    projectExample: "budget",
+  },
+  {
+    language: "sql",
+    name: "SQL",
+    progress: 55,
+    projectExample: "schoolcms",
+  },
+  {
+    language: "python",
+    name: "Python",
+    progress: 40,
+    projectExample: "schoolcms",
+  },
+  {
+    language: "csharp",
+    name: "C#",
+    progress: 40,
+    projectExample: "edzer",
+  },
+  {
+    language: "java",
+    name: "Java",
+    progress: 30,
+  },
+]
 
+// Check if template is supported
 if ("content" in document.createElement("template")) {
+
+  // works.html template
   if (document.querySelector("#work-template") != null) {
+    var worksDiv = document.querySelector("#works");
+    
     var template = document.querySelector("#work-template");
 
     works.forEach((e) => {
       // Clone template content
       let row = template.content.cloneNode(true);
+
+      // Inject id to w-col
+      row.querySelector('.w-col').id = `${e.prefix}-col`;
 
       // Get swiper-container
       let swiperContainer = row.querySelector(".swiper-container");
@@ -306,6 +343,31 @@ if ("content" in document.createElement("template")) {
       worksDiv.appendChild(row);
     });
   }
+
+  // index.html template
+  if (document.querySelector("#skill-template") != null) {
+    var skillsList = document.querySelector("#ul-skillset");
+
+    var template = document.querySelector('#skill-template');
+
+    // Foreach skill, create li, append to #ul-skillset
+    skills.forEach(s => {
+
+      let item = template.content.cloneNode(true);
+
+      // Inject skill-name and a.href
+      let itemLink = item.querySelector('a');
+      itemLink.innerText = s.name;
+      itemLink.href = (s.projectExample) ? `./works.html#${s.projectExample}-col`: '#';
+
+      // Set width according to progress
+      let progressbar = item.querySelector('.progress-bar-container');
+      progressbar.style.width = `${s.progress}%`;
+
+      skillsList.appendChild(item);
+    });
+  }
+
 } else {
   // Callback function
 }

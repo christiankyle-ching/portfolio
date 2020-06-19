@@ -22,13 +22,11 @@ $shadow: rgba(0, 0, 0, 0.32);
 $screen-sm: 576px;
 $screen-md: 768px;
 
-$progress: (
-  "javascript": 60%,
-  "sql": 50%,
-  "python": 40%,
-  "csharp": 30%,
-  "java": 20%,
-);
+$card-gap-collapsed: 10%;
+$card-gap-expanded: 20%;
+$card-offset-expanded: 10%;
+
+$index-intro-duration: 500ms;
 // #endregion
 
 // #region Global Default Styles and Fixes
@@ -115,7 +113,7 @@ a.underline {
     background: map-get($colors, "link");
     transition: 300ms;
 
-    animation: expand-full-width 600ms 2 0s alternate;
+    animation: expand-full-width 600ms ease-in-out 0s alternate 2;
   }
 
   &:hover:after {
@@ -142,6 +140,21 @@ button {
   outline: none;
 }
 
+.floater {
+  position: absolute;
+  z-index: -5;
+  width: 100px; // override for variety
+  opacity: 0.3;
+}
+
+.floater-waves {
+  content: url("../images/floaters/waves.svg");
+}
+
+.floater-spiral {
+  content: url("../images/floaters/spiral.svg");
+}
+
 // #endregion
 
 // #region ---------- INDEX ----------
@@ -157,7 +170,25 @@ button {
     display: flex;
     flex-flow: column wrap;
     overflow: hidden;
+
+
   }
+
+  // override links color, animation delay
+  a {
+    color: white !important;
+
+    &:after {
+      animation: expand-full-width 600ms ease-in-out $index-intro-duration 2
+        alternate !important;
+    }
+  }
+
+  
+    // floaters position
+    .floater:nth-child(1) {
+      right: 0 !important;
+    }
 }
 
 // #region Flexbox
@@ -307,17 +338,17 @@ button {
   // Cards - Works
   position: relative;
   .card:nth-child(1) {
-    bottom: 20%;
+    bottom: (2 * $card-gap-collapsed);
     background-image: url("../images/schoolcms/lessons.png");
   }
 
   .card:nth-child(2) {
-    bottom: 10%;
+    bottom: (1 * $card-gap-collapsed);
     background-image: url("../images/edzer/login.png");
   }
 
   .card:nth-child(3) {
-    bottom: 0;
+    bottom: (0 * $card-gap-collapsed);
     background-image: url("../images/budget-planner/backup.png");
   }
 
@@ -331,15 +362,15 @@ button {
     }
 
     .card:nth-child(1) {
-      bottom: 35%;
+      bottom: (2 * $card-gap-expanded) + $card-offset-expanded;
     }
 
     .card:nth-child(2) {
-      bottom: 20%;
+      bottom: (1 * $card-gap-expanded) + $card-offset-expanded;
     }
 
     .card:nth-child(3) {
-      bottom: 5%;
+      bottom: (0 * $card-gap-expanded) + $card-offset-expanded;
     }
   }
 }
@@ -374,19 +405,19 @@ button {
   // Cards - About
   position: relative;
   .card:nth-child(1) {
+    right: (2 * $card-gap-collapsed);
     background-image: url("../images/me/code.jpg");
-    right: 20%;
   }
 
   .card:nth-child(2) {
+    right: (1 * $card-gap-collapsed);
     background-image: url("../images/me/formal.jpg");
     background-size: contain;
     background-repeat: no-repeat;
-    right: 10%;
   }
 
   .card:nth-child(3) {
-    right: 0;
+    right: (0 * $card-gap-collapsed);
     background-image: url("../images/me/vector-art.png");
     background-size: contain;
     background-repeat: no-repeat;
@@ -402,15 +433,15 @@ button {
     }
 
     .card:nth-child(1) {
-      right: 35%;
+      right: (2 * $card-gap-expanded) + $card-offset-expanded;
     }
 
     .card:nth-child(2) {
-      right: 20%;
+      right: (1 * $card-gap-expanded) + $card-offset-expanded;
     }
 
     .card:nth-child(3) {
-      right: 5%;
+      right: (0 * $card-gap-expanded) + $card-offset-expanded;
     }
   }
 
@@ -475,34 +506,6 @@ button {
 }
 // #endregion
 
-// #region Real ProgressBar Values
-.javascript {
-  .progress-bar-container {
-    width: map-get($progress, "javascript") !important;
-  }
-}
-.sql {
-  .progress-bar-container {
-    width: map-get($progress, "sql") !important;
-  }
-}
-.python {
-  .progress-bar-container {
-    width: map-get($progress, "python") !important;
-  }
-}
-.csharp {
-  .progress-bar-container {
-    width: map-get($progress, "csharp") !important;
-  }
-}
-.java {
-  .progress-bar-container {
-    width: map-get($progress, "java") !important;
-  }
-}
-// #endregion
-
 // #region Intro Animations
 
 // Section - Name
@@ -514,10 +517,10 @@ button {
   }
 
   .section-1 {
-    animation: fade-to-right 0.5s forwards 0.1s ease-out;
+    animation: fade-to-right $index-intro-duration forwards 0.1s ease-out;
   }
   .section-2 {
-    animation: fade-to-right 0.5s forwards 0s ease-out;
+    animation: fade-to-right $index-intro-duration forwards 0s ease-out;
   }
 }
 
@@ -530,45 +533,46 @@ button {
   }
 
   .desc-bg {
-    animation: fade-to-left-2 0.5s forwards 0.1s ease-out;
+    animation: fade-to-left-2 $index-intro-duration forwards 0.1s ease-out;
   }
   .text-desc {
-    animation: fade-to-left 0.5s forwards 0s ease-out;
+    animation: fade-to-left $index-intro-duration forwards 0s ease-out;
   }
 }
 
 // Section - Works
 .box-4 {
-  animation: slide-up 0.5s forwards 0s ease-out;
+  animation: slide-up $index-intro-duration forwards 0s ease-out;
 
   .upper-box {
-    animation: slide-up 0.5s forwards 0s ease-in;
+    animation: slide-up $index-intro-duration forwards 0s ease-in;
   }
 }
 
 // Section - Background
 .box-5 {
-  animation: slide-left 0.5s forwards 0s ease-out;
+  animation: slide-left $index-intro-duration forwards 0s ease-out;
 
   .upper-box {
-    animation: slide-left 0.5s forwards 0s ease-in;
+    animation: slide-left $index-intro-duration forwards 0s ease-in;
   }
 }
 
 // Section - Skill Set
 .box-2 {
   .col-1 {
-    animation: fade-to-right 0.5s forwards 0s ease-out;
+    animation: fade-to-right $index-intro-duration forwards 0s ease-out;
   }
 
   .col-2 {
     // set initial opacity
     opacity: 0;
-    animation: fade-to-right 0.5s forwards 0.4s ease-out;
+    animation: fade-to-right $index-intro-duration forwards 0.4s ease-out;
 
     .progress-bar {
       width: 0;
-      animation: expand-full-width 0.6s forwards 1s ease-out;
+      animation: expand-full-width ($index-intro-duration + 100ms) forwards
+        ($index-intro-duration + 500ms) ease-out;
     }
   }
 }

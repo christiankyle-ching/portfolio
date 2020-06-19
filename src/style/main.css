@@ -80,8 +80,8 @@ a.underline:after {
   background: #84c8ff;
   -webkit-transition: 300ms;
   transition: 300ms;
-  -webkit-animation: expand-full-width 600ms 2 0s alternate;
-          animation: expand-full-width 600ms 2 0s alternate;
+  -webkit-animation: expand-full-width 600ms ease-in-out 0s alternate 2;
+          animation: expand-full-width 600ms ease-in-out 0s alternate 2;
 }
 
 a.underline:hover:after {
@@ -104,6 +104,21 @@ button {
   outline: none;
 }
 
+.floater {
+  position: absolute;
+  z-index: -5;
+  width: 100px;
+  opacity: 0.3;
+}
+
+.floater-waves {
+  content: url("../images/floaters/waves.svg");
+}
+
+.floater-spiral {
+  content: url("../images/floaters/spiral.svg");
+}
+
 #index-body {
   font-size: 0.7em;
 }
@@ -120,6 +135,19 @@ button {
       -ms-flex-flow: column wrap;
           flex-flow: column wrap;
   overflow: hidden;
+}
+
+#index-body a {
+  color: white !important;
+}
+
+#index-body a:after {
+  -webkit-animation: expand-full-width 600ms ease-in-out 500ms 2 alternate !important;
+          animation: expand-full-width 600ms ease-in-out 500ms 2 alternate !important;
+}
+
+#index-body .floater:nth-child(1) {
+  right: 0 !important;
 }
 
 [class*="box-"] {
@@ -315,7 +343,7 @@ button {
 }
 
 .box-4 .card:nth-child(3) {
-  bottom: 0;
+  bottom: 0%;
   background-image: url("../images/budget-planner/backup.png");
 }
 
@@ -326,15 +354,15 @@ button {
 }
 
 .box-4:hover .card:nth-child(1) {
-  bottom: 35%;
+  bottom: 50%;
 }
 
 .box-4:hover .card:nth-child(2) {
-  bottom: 20%;
+  bottom: 30%;
 }
 
 .box-4:hover .card:nth-child(3) {
-  bottom: 5%;
+  bottom: 10%;
 }
 
 .box-5 {
@@ -381,19 +409,19 @@ button {
 }
 
 .box-5 .card:nth-child(1) {
-  background-image: url("../images/me/code.jpg");
   right: 20%;
+  background-image: url("../images/me/code.jpg");
 }
 
 .box-5 .card:nth-child(2) {
+  right: 10%;
   background-image: url("../images/me/formal.jpg");
   background-size: contain;
   background-repeat: no-repeat;
-  right: 10%;
 }
 
 .box-5 .card:nth-child(3) {
-  right: 0;
+  right: 0%;
   background-image: url("../images/me/vector-art.png");
   background-size: contain;
   background-repeat: no-repeat;
@@ -406,15 +434,15 @@ button {
 }
 
 .box-5:hover .card:nth-child(1) {
-  right: 35%;
+  right: 50%;
 }
 
 .box-5:hover .card:nth-child(2) {
-  right: 20%;
+  right: 30%;
 }
 
 .box-5:hover .card:nth-child(3) {
-  right: 5%;
+  right: 10%;
 }
 
 .box-2 {
@@ -496,39 +524,19 @@ button {
           box-shadow: 0 5px 6px rgba(0, 0, 0, 0.32);
 }
 
-.javascript .progress-bar-container {
-  width: 60% !important;
-}
-
-.sql .progress-bar-container {
-  width: 50% !important;
-}
-
-.python .progress-bar-container {
-  width: 40% !important;
-}
-
-.csharp .progress-bar-container {
-  width: 30% !important;
-}
-
-.java .progress-bar-container {
-  width: 20% !important;
-}
-
 .box-1 .section-1,
 .box-1 .section-2 {
   opacity: 0;
 }
 
 .box-1 .section-1 {
-  -webkit-animation: fade-to-right 0.5s forwards 0.1s ease-out;
-          animation: fade-to-right 0.5s forwards 0.1s ease-out;
+  -webkit-animation: fade-to-right 500ms forwards 0.1s ease-out;
+          animation: fade-to-right 500ms forwards 0.1s ease-out;
 }
 
 .box-1 .section-2 {
-  -webkit-animation: fade-to-right 0.5s forwards 0s ease-out;
-          animation: fade-to-right 0.5s forwards 0s ease-out;
+  -webkit-animation: fade-to-right 500ms forwards 0s ease-out;
+          animation: fade-to-right 500ms forwards 0s ease-out;
 }
 
 .box-3 .desc-bg,
@@ -537,50 +545,50 @@ button {
 }
 
 .box-3 .desc-bg {
-  -webkit-animation: fade-to-left-2 0.5s forwards 0.1s ease-out;
-          animation: fade-to-left-2 0.5s forwards 0.1s ease-out;
+  -webkit-animation: fade-to-left-2 500ms forwards 0.1s ease-out;
+          animation: fade-to-left-2 500ms forwards 0.1s ease-out;
 }
 
 .box-3 .text-desc {
-  -webkit-animation: fade-to-left 0.5s forwards 0s ease-out;
-          animation: fade-to-left 0.5s forwards 0s ease-out;
+  -webkit-animation: fade-to-left 500ms forwards 0s ease-out;
+          animation: fade-to-left 500ms forwards 0s ease-out;
 }
 
 .box-4 {
-  -webkit-animation: slide-up 0.5s forwards 0s ease-out;
-          animation: slide-up 0.5s forwards 0s ease-out;
+  -webkit-animation: slide-up 500ms forwards 0s ease-out;
+          animation: slide-up 500ms forwards 0s ease-out;
 }
 
 .box-4 .upper-box {
-  -webkit-animation: slide-up 0.5s forwards 0s ease-in;
-          animation: slide-up 0.5s forwards 0s ease-in;
+  -webkit-animation: slide-up 500ms forwards 0s ease-in;
+          animation: slide-up 500ms forwards 0s ease-in;
 }
 
 .box-5 {
-  -webkit-animation: slide-left 0.5s forwards 0s ease-out;
-          animation: slide-left 0.5s forwards 0s ease-out;
+  -webkit-animation: slide-left 500ms forwards 0s ease-out;
+          animation: slide-left 500ms forwards 0s ease-out;
 }
 
 .box-5 .upper-box {
-  -webkit-animation: slide-left 0.5s forwards 0s ease-in;
-          animation: slide-left 0.5s forwards 0s ease-in;
+  -webkit-animation: slide-left 500ms forwards 0s ease-in;
+          animation: slide-left 500ms forwards 0s ease-in;
 }
 
 .box-2 .col-1 {
-  -webkit-animation: fade-to-right 0.5s forwards 0s ease-out;
-          animation: fade-to-right 0.5s forwards 0s ease-out;
+  -webkit-animation: fade-to-right 500ms forwards 0s ease-out;
+          animation: fade-to-right 500ms forwards 0s ease-out;
 }
 
 .box-2 .col-2 {
   opacity: 0;
-  -webkit-animation: fade-to-right 0.5s forwards 0.4s ease-out;
-          animation: fade-to-right 0.5s forwards 0.4s ease-out;
+  -webkit-animation: fade-to-right 500ms forwards 0.4s ease-out;
+          animation: fade-to-right 500ms forwards 0.4s ease-out;
 }
 
 .box-2 .col-2 .progress-bar {
   width: 0;
-  -webkit-animation: expand-full-width 0.6s forwards 1s ease-out;
-          animation: expand-full-width 0.6s forwards 1s ease-out;
+  -webkit-animation: expand-full-width 600ms forwards 1000ms ease-out;
+          animation: expand-full-width 600ms forwards 1000ms ease-out;
 }
 
 #works-body p,

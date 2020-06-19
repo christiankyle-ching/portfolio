@@ -10,6 +10,24 @@
 
 <body id="index-body">
 
+    <template id="skill-template">
+
+        <li>
+            <div class="skill-name">
+                <!-- Inject name here -->
+                <a href="#" class="underline"></a>
+            </div>
+
+            <div class="full-bar">
+
+                <!-- Inject width style to container for real progress percent -->
+                <div class="progress-bar-container">
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
+        </li>
+    </template>
+
     <div class="container">
 
         <!-- Section - Name -->
@@ -31,55 +49,10 @@
             </div>
 
             <div class="col-2">
-                <!-- Skills -->
-                <ul>
-
-                    <li class="javascript">
-                        <div class="skill-name">JavaScript</div>
-                        <div class="full-bar">
-                            <div class="progress-bar-container">
-                                <div class="progress-bar"></div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="sql">
-                        <div class="skill-name">SQL</div>
-                        <div class="full-bar">
-                            <div class="progress-bar-container">
-                                <div class="progress-bar"></div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="python">
-                        <div class="skill-name">Python</div>
-                        <div class="full-bar">
-                            <div class="progress-bar-container">
-                                <div class="progress-bar"></div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="csharp">
-                        <div class="skill-name">C#</div>
-                        <div class="full-bar">
-                            <div class="progress-bar-container">
-                                <div class="progress-bar"></div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="java">
-                        <div class="skill-name">Java</div>
-                        <div class="full-bar">
-                            <div class="progress-bar-container">
-                                <div class="progress-bar"></div>
-                            </div>
-                        </div>
-                    </li>
-
+                <!-- Skills - Injected by JS -->
+                <ul id="ul-skillset">
                 </ul>
+
             </div>
         </div>
 
@@ -104,7 +77,7 @@
             <div class="card"></div>
             <div class="card"></div>
             <div class="card"></div>
-            
+
             <div class="col">
                 <!-- Spacer -->
             </div>
@@ -116,11 +89,11 @@
 
         <!-- Section - About -->
         <a href="./about.html" class="box-5">
-            
+
             <div class="card card-right"></div>
             <div class="card card-right"></div>
             <div class="card card-right"></div>
-            
+
             <div class="col">
                 <!-- Spacer -->
             </div>
@@ -130,9 +103,16 @@
             </div>
 
         </a>
+<!-- 
+        <div class="floater">
+            <img class="floater-spiral">
+        </div>
+        <div class="floater">
+            <img class="floater-waves">
+        </div> -->
 
     </div>
-    
+
 </body>
 
 </html>
