@@ -9,7 +9,6 @@ $colors: (
   "orange-shade": #945a02,
   "teal": #05828e,
   "teal-shade": #044e55,
-  "link": #84c8ff,
 );
 
 $opacity: (
@@ -103,14 +102,14 @@ a {
 
 a.underline {
   display: inline-block;
-  color: map-get($colors, "link");
+  color: map-get($colors, "teal");
 
   &:after {
     content: "";
     width: 0px;
     height: 2px;
     display: block;
-    background: map-get($colors, "link");
+    background: map-get($colors, "teal");
     transition: 300ms;
 
     animation: expand-full-width 600ms ease-in-out 0s alternate 2;
@@ -193,7 +192,7 @@ button {
     color: white !important;
 
     &:after {
-      animation: expand-full-width 600ms ease-in-out $index-intro-duration 2
+      animation: expand-full-width 600ms ease-in-out ($index-intro-duration + 1000) 2
         alternate !important;
     }
   }
@@ -504,12 +503,14 @@ button {
         .progress-bar {
           height: 0.8em;
           background-color: map-get($colors, "blue");
-          border-radius: 0.8em;
+          // border-radius: 0.8em;
         }
 
         .progress-bar-container {
           .progress-bar {
-            background-color: map-get($colors, "orange");
+            // background-color: map-get($colors, "orange");
+            background: linear-gradient(to right, map-get($colors, "orange-shade"), map-get($colors, "orange"));
+            // border-radius: 0.8em 0 0 0.8em;
             box-shadow: 0 5px 6px $shadow;
           }
         }
