@@ -149,7 +149,7 @@ button {
 
 .floater {
   position: absolute;
-  
+
   width: 10vw; // override for variety
   opacity: 0.3;
 }
@@ -192,8 +192,8 @@ button {
     color: white !important;
 
     &:after {
-      animation: expand-full-width 600ms ease-in-out ($index-intro-duration + 1000) 2
-        alternate !important;
+      animation: expand-full-width 600ms ease-in-out
+        ($index-intro-duration + 1000) 2 alternate !important;
     }
   }
 }
@@ -509,7 +509,11 @@ button {
         .progress-bar-container {
           .progress-bar {
             // background-color: map-get($colors, "orange");
-            background: linear-gradient(to right, map-get($colors, "orange-shade"), map-get($colors, "orange"));
+            background: linear-gradient(
+              to right,
+              map-get($colors, "orange-shade"),
+              map-get($colors, "orange")
+            );
             // border-radius: 0.8em 0 0 0.8em;
             box-shadow: 0 5px 6px $shadow;
           }
@@ -914,6 +918,13 @@ button {
     img {
       width: 25px;
       opacity: 1 !important;
+    }
+
+    &:hover {
+      strong,
+      .contact-label {
+        display: inline;
+      }
     }
   }
 

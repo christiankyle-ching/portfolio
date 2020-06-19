@@ -921,6 +921,11 @@ button {
   opacity: 1 !important;
 }
 
+#about-body .contact-links:hover strong,
+#about-body .contact-links:hover .contact-label {
+  display: inline;
+}
+
 @media (min-width: 768px) {
   #about-body .contact-links strong,
   #about-body .contact-links .contact-label {
