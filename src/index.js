@@ -25,10 +25,10 @@ import edzer_login from "./images/edzer/login.png";
 import edzer_schedules from "./images/edzer/schedules.png";
 
 // SchoolCMS
-import schoolcms_login from './images/schoolcms/login.png';
-import schoolcms_courses from './images/schoolcms/courses.png';
-import schoolcms_lessons from './images/schoolcms/lessons.png';
-import schoolcms_subjects from './images/schoolcms/subjects.png';
+import schoolcms_login from "./images/schoolcms/login.png";
+import schoolcms_courses from "./images/schoolcms/courses.png";
+import schoolcms_lessons from "./images/schoolcms/lessons.png";
+import schoolcms_subjects from "./images/schoolcms/subjects.png";
 
 var works = [
   {
@@ -222,15 +222,14 @@ var skills = [
     name: "Java",
     progress: 30,
   },
-]
+];
 
 // Check if template is supported
 if ("content" in document.createElement("template")) {
-
   // works.html template
   if (document.querySelector("#work-template") != null) {
     var worksDiv = document.querySelector("#works");
-    
+
     var template = document.querySelector("#work-template");
 
     works.forEach((e) => {
@@ -238,7 +237,7 @@ if ("content" in document.createElement("template")) {
       let row = template.content.cloneNode(true);
 
       // Inject id to w-col
-      row.querySelector('.w-col').id = `${e.prefix}-col`;
+      row.querySelector(".w-col").id = `${e.prefix}-col`;
 
       // Get swiper-container
       let swiperContainer = row.querySelector(".swiper-container");
@@ -348,26 +347,58 @@ if ("content" in document.createElement("template")) {
   if (document.querySelector("#skill-template") != null) {
     var skillsList = document.querySelector("#ul-skillset");
 
-    var template = document.querySelector('#skill-template');
+    var template = document.querySelector("#skill-template");
 
     // Foreach skill, create li, append to #ul-skillset
-    skills.forEach(s => {
-
+    skills.forEach((s) => {
       let item = template.content.cloneNode(true);
 
       // Inject skill-name and a.href
-      let itemLink = item.querySelector('a');
-      itemLink.innerText = s.name;
-      itemLink.href = (s.projectExample) ? `./works.html#${s.projectExample}-col`: '#';
+      let skillNameDiv = item.querySelector(".skill-name");
+      let skillLink = skillNameDiv.querySelector("a");
+      skillLink.innerText = s.name;
+      skillLink.href = s.projectExample
+        ? `./works.html#${s.projectExample}-col`
+        : "#";
+
+      // Inject skill percentage id
+      let skillPercentage = skillNameDiv.querySelector("span");
+      skillPercentage.id = `${s.language}-value`;
 
       // Set width according to progress
-      let progressbar = item.querySelector('.progress-bar-container');
+      let progressbar = item.querySelector(".progress-bar-container");
       progressbar.style.width = `${s.progress}%`;
 
       skillsList.appendChild(item);
     });
-  }
 
+    let indexIntroDuration = 500;
+    let animDurationms = indexIntroDuration + 100;
+
+    let delay = indexIntroDuration + 500;
+
+    setTimeout(() => {
+      skills.forEach((s) => {
+        animateValue(`${s.language}-value`, s.progress, animDurationms);
+      });
+    }, delay);
+
+    function animateValue(id, end, durationms) {
+      var obj = document.getElementById(id);
+      var stepms = Math.floor(durationms / end);
+
+      var start = 0;
+      let timer = setInterval(() => {
+        obj.innerText = `${start}%`;
+
+        if (start + 1 <= end) {
+          start += 1;
+        } else {
+          clearInterval(timer);
+        }
+      }, stepms);
+    }
+  }
 } else {
   // Callback function
 }
@@ -403,11 +434,10 @@ var edzerSwiper = new Swiper(".edzer-slider", {
   },
 });
 
-
-var selfSwiper = new Swiper('.self-swiper', {
+var selfSwiper = new Swiper(".self-swiper", {
   pagination: {
-    el: '.self-swiper-pagination',
-    type: 'bullets'
+    el: ".self-swiper-pagination",
+    type: "bullets",
   },
   initialSlide: 1,
   breakpoints: {
@@ -416,6 +446,6 @@ var selfSwiper = new Swiper('.self-swiper', {
     },
     768: {
       slidesPerView: 3,
-    }
-  }
-})
+    },
+  },
+});

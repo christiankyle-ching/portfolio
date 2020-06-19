@@ -104,10 +104,16 @@ button {
   outline: none;
 }
 
+.floaters {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
 .floater {
   position: absolute;
-  z-index: -5;
-  width: 100px;
+  width: 10vw;
   opacity: 0.3;
 }
 
@@ -121,12 +127,12 @@ button {
 
 #index-body {
   font-size: 0.7em;
+  background-color: #030303;
 }
 
 #index-body .container {
   width: 100%;
   height: 100vh;
-  background-color: #030303;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -137,6 +143,13 @@ button {
   overflow: hidden;
 }
 
+#index-body .container .floaters div:nth-child(2) {
+  bottom: 10vh;
+  right: 3vw;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+
 #index-body a {
   color: white !important;
 }
@@ -144,10 +157,6 @@ button {
 #index-body a:after {
   -webkit-animation: expand-full-width 600ms ease-in-out 500ms 2 alternate !important;
           animation: expand-full-width 600ms ease-in-out 500ms 2 alternate !important;
-}
-
-#index-body .floater:nth-child(1) {
-  right: 0 !important;
 }
 
 [class*="box-"] {
@@ -451,7 +460,6 @@ button {
   display: flex;
   z-index: 0;
   overflow: hidden;
-  background-color: #030303;
 }
 
 .box-2 .col-1 {
@@ -509,6 +517,10 @@ button {
 .box-2 .col-2 ul li .skill-name {
   font-size: 1.2em;
   padding-bottom: 0.4em;
+}
+
+.box-2 .col-2 ul li .skill-name > span {
+  float: right;
 }
 
 .box-2 .col-2 ul li .full-bar,
