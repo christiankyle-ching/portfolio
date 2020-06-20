@@ -41,15 +41,21 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
-      filename: './index.html'
+      filename: './index.html',
+      favicon: './src/images/favicon.ico'
     }),
     new HtmlWebpackPlugin({
       template: './src/works.html',
-      filename: './works.html'
+      filename: './works.html',
+      favicon: './src/images/favicon.ico'
     }),
     new HtmlWebpackPlugin({
       template: './src/about.html',
-      filename: './about.html'
+      filename: './about.html',
+      favicon: './src/images/favicon.ico'
+    }),
+    new HtmlWebpackPlugin({
+      favicon: './src/images/favicon.ico'
     }),
   ],
 
