@@ -25,6 +25,7 @@ import edzer_login from "./images/edzer/login.png";
 import edzer_schedules from "./images/edzer/schedules.png";
 
 // SchoolCMS
+import schoolcms_home from "./images/schoolcms/home.png";
 import schoolcms_login from "./images/schoolcms/login.png";
 import schoolcms_courses from "./images/schoolcms/courses.png";
 import schoolcms_lessons from "./images/schoolcms/lessons.png";
@@ -113,6 +114,10 @@ var works = [
     prefix: "schoolcms",
     images: [
       {
+        url: schoolcms_home,
+        label: "All school lesson files in one place",
+      },
+      {
         url: schoolcms_login,
         label: "Login Page",
       },
@@ -132,8 +137,13 @@ var works = [
     links: [
       {
         site: "github",
-        url: "#",
-        disabled: true,
+        url: "https://github.com/christiankyle-ching/schoolcms",
+        disabled: false,
+      },
+      {
+        site: "open",
+        url: "https://school-online-content.herokuapp.com/",
+        disabled: false,
       },
     ],
   },
@@ -316,7 +326,9 @@ if ("content" in document.createElement("template")) {
         let linkItem = tmpLinkItem.cloneNode(true);
 
         // Inject Links with url and class (for image)
-        linkItem.querySelector("a").href = l.url;
+        let linkA = linkItem.querySelector("a")
+        linkA.href = l.url;
+        linkA.target = '_blank';
         if (l.disabled) linkItem.querySelector("a").classList.add("disabled");
         linkItem.querySelector("img").classList.add(l.site);
 
