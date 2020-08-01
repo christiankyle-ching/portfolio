@@ -105,7 +105,7 @@ var works = [
       },
     ],
   },
-  
+
   // Budget Planner
   {
     title: "Budget Planner",
@@ -322,7 +322,7 @@ if ("content" in document.createElement("template")) {
 
       // Inject Title, Stack
       let title = row.querySelector(".w-title");
-      title.innerText = e.title;
+      title.innerHTML = `${e.title}`;
       let stack = row.querySelector(".w-stack");
       stack.innerText = `${e.stack} | ${e.date_dev}`;
 
@@ -362,8 +362,16 @@ if ("content" in document.createElement("template")) {
         let linkA = linkItem.querySelector("a")
         linkA.href = l.url;
         linkA.target = '_blank';
-        if (l.disabled) linkItem.querySelector("a").classList.add("disabled");
+        linkItem.querySelector("img").classList.add('link-icon');
         linkItem.querySelector("img").classList.add(l.site);
+
+        if (l.disabled) {
+          linkItem.querySelector("a").classList.add("disabled");
+        } else {
+          if (l.site === 'open') {
+            title.innerHTML += `<a href="${l.url}"><img class="link-icon-sm open"></a>`
+          }
+        }
 
         divLinks.appendChild(linkItem);
       });

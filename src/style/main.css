@@ -126,13 +126,6 @@ p {
   overflow: hidden;
 }
 
-#index-body .container .floaters div:nth-child(2) {
-  bottom: 10vh;
-  right: 3vw;
-  -webkit-transform: rotate(-90deg);
-          transform: rotate(-90deg);
-}
-
 #index-body a {
   color: white !important;
 }
@@ -326,7 +319,7 @@ p {
 
 .box-4 .card:nth-child(1) {
   bottom: 20%;
-  background-image: url("../images/edzer/login.png");
+  background-image: url("../images/roomfiles/room.png");
 }
 
 .box-4 .card:nth-child(2) {
@@ -726,16 +719,23 @@ p {
   margin-right: 0 !important;
 }
 
-.w-links .github {
-  content: url("../images/github.svg");
+.link-icon {
   width: 30px;
   height: 30px;
 }
 
-.w-links .open {
+.link-icon-sm {
+  margin-left: 10px;
+  width: 20px;
+  height: 20px;
+}
+
+.github {
+  content: url("../images/github.svg");
+}
+
+.open {
   content: url("../images/open.svg");
-  width: 30px;
-  height: 30px;
 }
 
 @media (min-width: 768px) {
