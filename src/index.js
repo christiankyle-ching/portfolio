@@ -5,7 +5,9 @@ require("./style/main.css");
 import Swiper from "swiper";
 require("swiper/css/swiper.min.css");
 
-// Import images
+
+
+// #region images
 
 // Budget Planner images
 import budget_logo from "./images/budget-planner/logo.png";
@@ -16,6 +18,14 @@ import budget_savings from "./images/budget-planner/savings.png";
 import budget_help from "./images/budget-planner/help.png";
 import budget_backup from "./images/budget-planner/backup.png";
 
+// RoomFiles
+import roomfiles_logo from "./images/roomfiles/logo.png";
+import roomfiles_files from "./images/roomfiles/files.png";
+import roomfiles_announcements from "./images/roomfiles/announcements.png";
+import roomfiles_notifications from "./images/roomfiles/notifications.png";
+import roomfiles_people from "./images/roomfiles/people.png";
+import roomfiles_room from "./images/roomfiles/room.png";
+
 // Edzer images
 import edzer_logo from "./images/edzer/logo.png";
 import edzer_add from "./images/edzer/add.png";
@@ -24,25 +34,93 @@ import edzer_instruments from "./images/edzer/instruments.png";
 import edzer_login from "./images/edzer/login.png";
 import edzer_schedules from "./images/edzer/schedules.png";
 
-// SchoolCMS
-import schoolcms_home from "./images/schoolcms/home.png";
-import schoolcms_login from "./images/schoolcms/login.png";
-import schoolcms_courses from "./images/schoolcms/courses.png";
-import schoolcms_lessons from "./images/schoolcms/lessons.png";
-import schoolcms_subjects from "./images/schoolcms/subjects.png";
+// #endregion
 
+
+
+// Variables
 var works = [
+  
+  // RoomFiles
+  {
+    title: "RoomFiles",
+    date_dev: "2020",
+    stack: "Django, Python",
+    description: 
+    `
+        <p>
+        RoomFiles is a small project I made while learning Python and Django. Using 
+        <a href="https://developers.google.com/drive" class="underline">Google Drive API</a>,
+        this simple web-app provides a place for users to upload files to (primarily lesson files 
+        for online learning), make announcements, all in a virtual room. Due to the ongoing 
+        (at the time of writing) pandemic situation, online learning is what our educational system
+        relies to, and this might help students store their lesson files on the cloud.
+        </p>
+        
+        <p>The web-app is up and available for viewing using the links below.</p>
+    `,
+    features: [
+      "Make a room and invite your colleagues",
+      "Upload your lesson files",
+      "Make announcements to stay on track",
+      "View and manage people in your room",
+    ],
+    prefix: "roomfiles",
+    images: [
+      {
+        url: roomfiles_logo,
+        label: "RoomFiles",
+      },
+      {
+        url: roomfiles_room,
+        label: "Create a room with your friends / colleagues!",
+      },
+      {
+        url: roomfiles_files,
+        label: "Store and share your lesson files",
+      },
+      {
+        url: roomfiles_announcements,
+        label: "Make announcements for everyone to see",
+      },
+      {
+        url: roomfiles_notifications,
+        label: "Get notified on recent activities",
+      },
+      {
+        url: roomfiles_people,
+        label: "Manage people in your room",
+      },
+    ],
+    links: [
+      {
+        site: "github",
+        url: "https://github.com/christiankyle-ching/roomfiles",
+        disabled: false,
+      },
+      {
+        site: "open",
+        url: "https://roomfiles.herokuapp.com/",
+        disabled: false,
+      },
+    ],
+  },
+  
+  // Budget Planner
   {
     title: "Budget Planner",
     date_dev: "2020",
     stack: "Ionic, Angular",
-    description: `
-          A simple budget planner that I made using <a href="https://ionicframework.com/" class="underline">Ionic</a>
-          / <a href="https://angular.io/" class="underline">Angular</a> stack. While starting to learn about Ionic, 
-          it has come to my idea to make a relatively simple budget planner/tracking app targeted for highschool
-          students that hopefully, they can use to track their allowances and expenses, and might encourage them
-          to save some of their money.
-        `,
+    description: 
+    `
+      <p>
+      A simple budget planner that I made using <a href="https://ionicframework.com/" class="underline">Ionic</a>
+      / <a href="https://angular.io/" class="underline">Angular</a> stack. While starting to learn about Ionic, 
+      it has come to my idea to make a relatively simple budget planner/tracking app targeted for highschool
+      students that hopefully, they can use to track their allowances and expenses, and might encourage them
+      to save some of their money.
+      </p>
+    `,
     features: [
       "Day-to-day tracking of allowances and expenses",
       "Generate monthly summary, provide basic insight of expenditures and income",
@@ -93,70 +171,23 @@ var works = [
       },
     ],
   },
-  {
-    title: "School Online Content System",
-    date_dev: "2020",
-    stack: "Django, Python",
-    description: `
-        A yet another simple website using <a href="https://www.djangoproject.com/" class="underline">Django</a>
-        / <a href="https://www.python.org/" class="underline">Python</a> stack. As I have been eager to learn Python, 
-        I have stumbled upon the Django framework and has integrated it with 
-        <a href="https://django-googledrive-storage.readthedocs.io/en/latest/" class="underline">Google Drive API</a> 
-        to host uploaded files by the users.
-    `,
-    features: [
-      "Has basic user registration",
-      "Also supports email password reset through Gmail's SMTP",
-      "Supports uploads of files online using Google Drive API (using a service account)",
-      "Limits access of students signed up to access only those lessons they are enrolled to",
-      "Targeted for use on small-scale schools only",
-    ],
-    prefix: "schoolcms",
-    images: [
-      {
-        url: schoolcms_home,
-        label: "All school lesson files in one place",
-      },
-      {
-        url: schoolcms_login,
-        label: "Login Page",
-      },
-      {
-        url: schoolcms_courses,
-        label: "Responsive design",
-      },
-      {
-        url: schoolcms_lessons,
-        label: "Download lessons hosted online",
-      },
-      {
-        url: schoolcms_subjects,
-        label: "View your subjects depending on your course",
-      },
-    ],
-    links: [
-      {
-        site: "github",
-        url: "https://github.com/christiankyle-ching/schoolcms",
-        disabled: false,
-      },
-      {
-        site: "open",
-        url: "https://school-online-content.herokuapp.com/",
-        disabled: false,
-      },
-    ],
-  },
+
+
+  // Edzer
   {
     title: "Edzer Studio Schedule Management System",
     date_dev: "2019",
     stack: "C#, MySQL",
-    description: `
-        This is a group project that I made together with a team, as a requirement for one of my 
-        database-related subjects on my 2nd year. Along with a planned database schema, an interview 
-        with <a href="https://www.facebook.com/EDZERSTUDIO/" class="underline">Edzer Music Studio</a>, this WPF application (C# and MySQL served on XAMPP) features a scheduling 
-        system with fees computation based on hours and intrument rentals, intrument management, and a 
-        user panel for the administrator to assign other users with less privileges to the system.
+    description:
+    `
+      <p>
+      This is a group project that I made together with a team, as a requirement for one of my 
+      database-related subjects on my 2nd year. Along with a planned database schema, an interview 
+      with <a href="https://www.facebook.com/EDZERSTUDIO/" class="underline">Edzer Music Studio</a>, 
+      this WPF application (C# and MySQL served on XAMPP) features a scheduling system with fees 
+      computation based on hours and intrument rentals, intrument management, and a user panel for 
+      the administrator to assign other users with less privileges to the system.
+      </p>
     `,
     features: [
       "Schedule management that enables system user to create, update, and delete schedule records",
@@ -234,7 +265,9 @@ var skills = [
   },
 ];
 
-// Check if template is supported
+
+
+// Works / Projects template items
 if ("content" in document.createElement("template")) {
   // works.html template
   if (document.querySelector("#work-template") != null) {
@@ -247,7 +280,7 @@ if ("content" in document.createElement("template")) {
       let row = template.content.cloneNode(true);
 
       // Inject id to w-col
-      row.querySelector(".w-col").id = `${e.prefix}-col`;
+      row.querySelector(".w-col").id = `${e.prefix}`;
 
       // Get swiper-container
       let swiperContainer = row.querySelector(".swiper-container");
@@ -294,9 +327,9 @@ if ("content" in document.createElement("template")) {
       stack.innerText = `${e.stack} | ${e.date_dev}`;
 
       // Inject id={prefix}-p, Description
-      let divDesc = row.querySelector(".w-p");
-      let divDescP = divDesc.querySelector("p");
-      divDescP.innerHTML = e.description;
+      let divDescContainer = row.querySelector(".w-p");
+      let divDescription = divDescContainer.querySelector("div");
+      divDescription.innerHTML = e.description;
 
       // Inject features list
       if (e.features) {
@@ -308,7 +341,7 @@ if ("content" in document.createElement("template")) {
           featuresList.append(featureItem);
         });
 
-        divDescP.appendChild(featuresList);
+        divDescription.appendChild(featuresList);
       }
 
       // Get ul links
@@ -336,20 +369,18 @@ if ("content" in document.createElement("template")) {
       });
 
       // Show / Hide Button
-      // let description = row.querySelector(`#${e.prefix}-p`);
       let toggle = row.querySelector(".w-toggle");
 
       toggle.addEventListener("click", () => {
-        if (divDesc.classList.contains("show-p")) {
-          divDesc.classList.remove("show-p");
+        console.log(divDescContainer);
+        if (divDescContainer.classList.contains("show-p")) {
+          divDescContainer.classList.remove("show-p");
           toggle.innerText = "Show More";
         } else {
-          divDesc.classList.add("show-p");
+          divDescContainer.classList.add("show-p");
           toggle.innerText = "Hide";
         }
       });
-
-      console.log(row);
 
       worksDiv.appendChild(row);
     });
@@ -370,8 +401,7 @@ if ("content" in document.createElement("template")) {
       let skillLink = skillNameDiv.querySelector("a");
       skillLink.innerText = s.name;
       skillLink.href = s.projectExample
-        ? `./works.html#${s.projectExample}-col`
-        : "#";
+        ? `./works.html#${s.projectExample}` : "#";
 
       // Inject skill percentage id
       let skillPercentage = skillNameDiv.querySelector("span");
@@ -415,6 +445,9 @@ if ("content" in document.createElement("template")) {
   // Callback function
 }
 
+
+
+
 // Swiper JS init Swipers
 var sliderOpts = {
   direction: "horizontal",
@@ -424,27 +457,19 @@ var sliderOpts = {
   freeModeMomentumRatio: 0.3,
 };
 
-var budgetSwiper = new Swiper(".budget-slider", {
-  ...sliderOpts,
-  pagination: {
-    el: ".budget-pagination",
-    type: "bullets",
-  },
-});
-var schoolcmsSwiper = new Swiper(".schoolcms-slider", {
-  ...sliderOpts,
-  pagination: {
-    el: ".schoolcms-pagination",
-    type: "bullets",
-  },
-});
-var edzerSwiper = new Swiper(".edzer-slider", {
-  ...sliderOpts,
-  pagination: {
-    el: ".edzer-pagination",
-    type: "bullets",
-  },
-});
+let sliderPrefixes = works.map(function (work) {
+  return work.prefix
+})
+
+for (let prefix of sliderPrefixes) {
+  new Swiper(`.${prefix}-slider`, {
+    ...sliderOpts,
+    pagination: {
+      el: `.${prefix}-pagination`,
+      type: "bullets",
+    },
+  });
+}
 
 var selfSwiper = new Swiper(".self-swiper", {
   pagination: {

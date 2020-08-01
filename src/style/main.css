@@ -104,25 +104,8 @@ button {
   outline: none;
 }
 
-.floaters {
-  position: absolute;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-}
-
-.floater {
-  position: absolute;
-  width: 10vw;
-  opacity: 0.3;
-}
-
-.floater-waves {
-  content: url("../images/floaters/waves.svg");
-}
-
-.floater-spiral {
-  content: url("../images/floaters/spiral.svg");
+p {
+  margin-bottom: 1em;
 }
 
 #index-body {
@@ -343,7 +326,7 @@ button {
 
 .box-4 .card:nth-child(1) {
   bottom: 20%;
-  background-image: url("../images/schoolcms/lessons.png");
+  background-image: url("../images/edzer/login.png");
 }
 
 .box-4 .card:nth-child(2) {
@@ -701,7 +684,7 @@ button {
   height: 0;
 }
 
-.w-col .w-col-desc .w-p > p {
+.w-col .w-col-desc .w-p > div {
   -webkit-transition: opacity 0.6s ease-out;
   transition: opacity 0.6s ease-out;
   opacity: 0;
@@ -709,8 +692,8 @@ button {
   line-height: 1.6em;
 }
 
-.w-col .w-col-desc .w-p > p > ol {
-  padding-top: 0.5em;
+.w-col .w-col-desc .w-p > div > ol {
+  padding: 0.5em;
   list-style-position: inside;
   font-size: 0.9em;
 }
@@ -721,7 +704,7 @@ button {
   height: auto !important;
 }
 
-.show-p > p {
+.show-p > div {
   opacity: 1 !important;
 }
 
@@ -795,7 +778,7 @@ button {
             transform: scaleY(1) !important;
     height: auto !important;
   }
-  .w-p > p {
+  .w-p > div {
     opacity: 1 !important;
   }
   .w-toggle {
