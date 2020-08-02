@@ -1,5 +1,6 @@
 // Main CSS import
-require("./style/main.css");
+// require("./style/main.scss");
+import './style/main.scss'
 
 // Swiper JS import
 import Swiper from "swiper";
@@ -322,7 +323,7 @@ if ("content" in document.createElement("template")) {
 
       // Inject Title, Stack
       let title = row.querySelector(".w-title");
-      title.innerHTML = `${e.title}`;
+      title.innerText = `${e.title}`;
       let stack = row.querySelector(".w-stack");
       stack.innerText = `${e.stack} | ${e.date_dev}`;
 
@@ -331,9 +332,15 @@ if ("content" in document.createElement("template")) {
       let divDescription = divDescContainer.querySelector("div");
       divDescription.innerHTML = e.description;
 
+      let featureHeader = document.createElement('h4')
+      featureHeader.classList.add('list-header')
+      featureHeader.innerText = 'Features'
       // Inject features list
       if (e.features) {
-        let featuresList = document.createElement("ol");
+        let featuresList = document.createElement("ul");
+        featuresList.classList.add('features-list')
+        
+        featuresList.appendChild(featureHeader)
 
         e.features.forEach((f) => {
           let featureItem = document.createElement("li");
@@ -341,6 +348,7 @@ if ("content" in document.createElement("template")) {
           featuresList.append(featureItem);
         });
 
+        
         divDescription.appendChild(featuresList);
       }
 
@@ -369,7 +377,14 @@ if ("content" in document.createElement("template")) {
           linkItem.querySelector("a").classList.add("disabled");
         } else {
           if (l.site === 'open') {
-            title.innerHTML += `<a href="${l.url}"><img class="link-icon-sm open"></a>`
+            let _openlink = document.createElement('a')
+            _openlink.href = l.url
+
+            let _img = document.createElement('img')
+            _img.classList.add('link-icon-sm', 'open')
+            _openlink.appendChild(_img)
+            
+            title.appendChild(_openlink)
           }
         }
 

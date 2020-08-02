@@ -647,10 +647,19 @@ p {
   // Column 2 - Description
   .w-col-desc {
     flex: 1;
-    padding: 1em;
+    padding: 1em 2em;
+    
     overflow: hidden;
 
     text-align: center;
+
+    // Project Title
+    .w-title {
+      > a {
+        position: absolute;
+        right: 2em;
+      }
+    }
 
     // Development Stack
     .w-stack {
@@ -660,7 +669,7 @@ p {
 
     // Description Container
     .w-p {
-      padding: 0.5em 0 1em 0;
+      padding: 1em 0;
       line-height: 1.3em;
 
       transition: transform 0.6s ease-in-out;
@@ -675,12 +684,40 @@ p {
         line-height: 1.6em;
 
         // Features
-        > ol {
-          padding: 0.5em;
-          list-style-position: inside;
+        > ul.features-list {
+          padding: 0 15%;
+          text-align: left;
+
+          .list-header {
+            padding-bottom: 1em;
+            margin-left: -1em;
+          }
+
+          > li {
+            padding-left: 1em;
+            padding-bottom: 0.2em;
+          }
+
+          list-style-position: outside;
           font-size: 0.9em;
+          
+          @media (min-width:$screen-md) {
+            padding: 0 10%;
+          }
         }
       }
+    }
+  }
+
+  @media (min-width: $screen-md) {
+    &:nth-of-type(even) > .w-col-desc {
+      padding-left: 2em !important;
+      padding-right: 0 !important;
+    }
+
+    &:nth-of-type(odd) > .w-col-desc {
+      padding-left: 0 !important;
+      padding-right: 2em !important;
     }
   }
 }
@@ -721,7 +758,6 @@ p {
 }
 
 .link-icon-sm {
-  margin-left: 10px;
   width: 20px;
   height: 20px;
 }
@@ -763,11 +799,36 @@ p {
   }
 
   .w-col:nth-of-type(even) {
+    // Work Images Column
     .w-col-slider {
       order: 2;
     }
+    
+    // Work Description Column
     .w-col-desc {
       text-align: right;
+
+      .w-title {
+        > a {
+          right: unset !important;
+          left: 2em !important;
+        }
+      }
+
+      ul.features-list {
+        direction: rtl;
+        text-align: right !important;
+
+        li {
+          padding-left: 0 !important;
+          padding-right: 1em !important;
+        }
+
+        .list-header {
+          margin-left: 0;
+          margin-right: -1em;
+        }
+      }
     }
 
     .w-links {
