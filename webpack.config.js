@@ -1,8 +1,10 @@
 const path = require("path");
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: "./src/index.js",
+
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
@@ -10,16 +12,19 @@ module.exports = {
 
   module: {
     rules: [
+      // css loader
       {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
       },
+      // sass/scss loader
       {
         test: /\.s[ac]ss$/i,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
+      // image loader
       {
-        test: /\.(png|svg|jpg)$/i,
+        test: /\.(png|svg|jpg|webp)$/i,
         use: [
           {
             loader: 'file-loader',
@@ -29,6 +34,7 @@ module.exports = {
           }
         ]
       },
+      // html loader
       {
         test: /\.html$/i,
         use: [
@@ -40,6 +46,7 @@ module.exports = {
       }
       
     ],
+
   },
 
   plugins: [
@@ -58,6 +65,7 @@ module.exports = {
       filename: './about.html',
       favicon: './src/images/favicon.png'
     }),
+    
   ],
 
   devtool: 'inline-source-map',

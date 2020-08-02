@@ -324,17 +324,17 @@ p {
   position: relative;
   .card:nth-child(1) {
     bottom: (2 * $card-gap-collapsed);
-    background-image: url("../images/roomfiles/room.png");
+    background-image: url("../images/roomfiles/room.webp");
   }
 
   .card:nth-child(2) {
     bottom: (1 * $card-gap-collapsed);
-    background-image: url("../images/edzer/login.png");
+    background-image: url("../images/edzer/login.webp");
   }
 
   .card:nth-child(3) {
     bottom: (0 * $card-gap-collapsed);
-    background-image: url("../images/budget-planner/backup.png");
+    background-image: url("../images/budget-planner/backup.webp");
   }
 
   cursor: pointer;

@@ -11,29 +11,29 @@ require("swiper/css/swiper.min.css");
 // #region images
 
 // Budget Planner images
-import budget_logo from "./images/budget-planner/logo.png";
-import budget_dark from "./images/budget-planner/dark.png";
-import budget_summary from "./images/budget-planner/summary.png";
-import budget_toplist from "./images/budget-planner/toplist.png";
-import budget_savings from "./images/budget-planner/savings.png";
-import budget_help from "./images/budget-planner/help.png";
-import budget_backup from "./images/budget-planner/backup.png";
+import budget_logo from "./images/budget-planner/logo.webp";
+import budget_dark from "./images/budget-planner/dark.webp";
+import budget_summary from "./images/budget-planner/summary.webp";
+import budget_toplist from "./images/budget-planner/toplist.webp";
+import budget_savings from "./images/budget-planner/savings.webp";
+import budget_help from "./images/budget-planner/help.webp";
+import budget_backup from "./images/budget-planner/backup.webp";
 
 // RoomFiles
-import roomfiles_logo from "./images/roomfiles/logo.png";
-import roomfiles_files from "./images/roomfiles/files.png";
-import roomfiles_announcements from "./images/roomfiles/announcements.png";
-import roomfiles_notifications from "./images/roomfiles/notifications.png";
-import roomfiles_people from "./images/roomfiles/people.png";
-import roomfiles_room from "./images/roomfiles/room.png";
+import roomfiles_logo from "./images/roomfiles/logo.webp";
+import roomfiles_files from "./images/roomfiles/files.webp";
+import roomfiles_announcements from "./images/roomfiles/announcements.webp";
+import roomfiles_notifications from "./images/roomfiles/notifications.webp";
+import roomfiles_people from "./images/roomfiles/people.webp";
+import roomfiles_room from "./images/roomfiles/room.webp";
 
 // Edzer images
-import edzer_logo from "./images/edzer/logo.png";
-import edzer_add from "./images/edzer/add.png";
-import edzer_dashboard from "./images/edzer/dashboard.png";
-import edzer_instruments from "./images/edzer/instruments.png";
-import edzer_login from "./images/edzer/login.png";
-import edzer_schedules from "./images/edzer/schedules.png";
+import edzer_logo from "./images/edzer/logo.webp";
+import edzer_add from "./images/edzer/add.webp";
+import edzer_dashboard from "./images/edzer/dashboard.webp";
+import edzer_instruments from "./images/edzer/instruments.webp";
+import edzer_login from "./images/edzer/login.webp";
+import edzer_schedules from "./images/edzer/schedules.webp";
 
 // #endregion
 
