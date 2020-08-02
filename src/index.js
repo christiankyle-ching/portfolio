@@ -245,13 +245,13 @@ var skills = [
     language: "sql",
     name: "SQL",
     progress: 55,
-    projectExample: "schoolcms",
+    projectExample: "edzer",
   },
   {
     language: "python",
     name: "Python",
     progress: 40,
-    projectExample: "schoolcms",
+    projectExample: "roomfiles",
   },
   {
     language: "csharp",
