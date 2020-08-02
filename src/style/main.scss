@@ -38,7 +38,9 @@ $index-intro-duration: 500ms;
 .card {
   width: 70%;
   height: 70%;
+
   background-size: cover;
+  background-position: top center;
 
   position: absolute;
   bottom: 0;
@@ -56,6 +58,8 @@ $index-intro-duration: 500ms;
 .card.card-right {
   bottom: unset;
   right: 0;
+
+  background-position: left center;
 
   // override center
   margin-left: 0 !important;
