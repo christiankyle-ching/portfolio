@@ -28,7 +28,7 @@ import roomfiles_people from "./images/roomfiles/people.jpg";
 import roomfiles_room from "./images/roomfiles/room.jpg";
 
 // Edzer images
-import edzer_logo from "./images/edzer/logo.jpg";
+import edzer_logo from "./images/edzer/logo.png";
 import edzer_add from "./images/edzer/add.jpg";
 import edzer_dashboard from "./images/edzer/dashboard.jpg";
 import edzer_instruments from "./images/edzer/instruments.jpg";
