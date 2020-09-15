@@ -26,6 +26,7 @@ import roomfiles_announcements from "./images/roomfiles/announcements.jpg";
 import roomfiles_notifications from "./images/roomfiles/notifications.jpg";
 import roomfiles_people from "./images/roomfiles/people.jpg";
 import roomfiles_room from "./images/roomfiles/room.jpg";
+import roomfiles_rooms from "./images/roomfiles/rooms.png";
 
 // Edzer images
 import edzer_logo from "./images/edzer/logo.png";
@@ -62,9 +63,11 @@ var works = [
     `,
     features: [
       "Make a room and invite your colleagues",
+      "Join multiple rooms at once",
       "Upload your lesson files",
       "Make announcements to stay on track",
-      "View and manage people in your room",
+      "View and manage people in your room (if you're the room creator)",
+      "Get notified on recent activities",
     ],
     prefix: "roomfiles",
     images: [
@@ -75,6 +78,10 @@ var works = [
       {
         url: roomfiles_room,
         label: "Create a room with your friends / colleagues!",
+      },
+      {
+        url: roomfiles_rooms,
+        label: "Join / Create multiple rooms for your needs",
       },
       {
         url: roomfiles_files,
@@ -423,8 +430,10 @@ if ("content" in document.createElement("template")) {
       let skillNameDiv = item.querySelector(".skill-name");
       let skillLink = skillNameDiv.querySelector("a");
       skillLink.innerText = s.name;
-      skillLink.href = s.projectExample
-        ? `./works.html#${s.projectExample}` : "#";
+      if (s.projectExample) {
+        skillLink.href = `./works.html#${s.projectExample}`
+        skillLink.classList.add('underline')
+      }
 
       // Inject skill percentage id
       let skillPercentage = skillNameDiv.querySelector("span");
@@ -465,7 +474,7 @@ if ("content" in document.createElement("template")) {
     }
   }
 } else {
-  // Callback function
+  // TODO: Callback function if does not support templates
 }
 
 
@@ -480,9 +489,7 @@ var sliderOpts = {
   freeModeMomentumRatio: 0.3,
 };
 
-let sliderPrefixes = works.map(function (work) {
-  return work.prefix
-})
+let sliderPrefixes = works.map((work) => work.prefix)
 
 for (let prefix of sliderPrefixes) {
   new Swiper(`.${prefix}-slider`, {
@@ -499,13 +506,10 @@ var selfSwiper = new Swiper(".self-swiper", {
     el: ".self-swiper-pagination",
     type: "bullets",
   },
-  initialSlide: 1,
+  initialSlide: 0,
   breakpoints: {
     576: {
       slidesPerView: 2,
-    },
-    768: {
-      slidesPerView: 3,
     },
   },
 });

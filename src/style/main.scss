@@ -7,7 +7,7 @@ $colors: (
   "blue": #1e2fc7,
   "orange": #d47f00,
   "orange-shade": #945a02,
-  "teal": #05828e,
+  "teal": #24e0f1,
   "teal-shade": #044e55,
 );
 
@@ -20,6 +20,8 @@ $shadow: rgba(0, 0, 0, 0.32);
 
 $screen-sm: 576px;
 $screen-md: 768px;
+$screen-lg: 992px;
+$screen-xlg: 1200px;
 
 $card-gap-collapsed: 10%;
 $card-gap-expanded: 20%;
@@ -106,7 +108,7 @@ a {
   &.underline {
     display: inline-block;
     color: map-get($colors, "teal");
-  
+
     &:after {
       content: "";
       width: 0px;
@@ -114,10 +116,10 @@ a {
       display: block;
       background: map-get($colors, "teal");
       transition: 300ms;
-  
+
       animation: expand-full-width 600ms ease-in-out 0s alternate 2;
     }
-  
+
     &:hover:after {
       width: 100%;
     }
@@ -162,7 +164,6 @@ p {
     display: flex;
     flex-flow: column wrap;
     overflow: hidden;
-
   }
 
   // override links color, animation delay
@@ -170,9 +171,20 @@ p {
     color: white !important;
 
     &:after {
-      animation: expand-full-width 600ms ease-in-out
-        ($index-intro-duration + 1000) 2 alternate !important;
+      animation: expand-full-width 600ms ease-in-out ($index-intro-duration + 1000) 2 alternate !important;
     }
+  }
+
+  .skillset-info {
+    position: absolute;
+    opacity: 0.6;
+
+    width: 1.2em;
+    height: 1.2em;
+    top: 0.6em;
+    right: 0.6em;
+
+    cursor: pointer;
   }
 }
 
@@ -204,17 +216,8 @@ p {
   flex: 1 1 33%;
 }
 
-@media (min-width: $screen-sm) {
-  #index-body {
-    font-size: 1em !important;
-  }
-}
-
+// Layout Shift
 @media (min-width: $screen-md) {
-  #index-body {
-    font-size: 1.2em !important;
-  }
-
   [class*="box-"] {
     width: 33.33% !important;
   }
@@ -243,7 +246,33 @@ p {
     order: 5;
   }
 }
-// #endregion
+
+// #region Responsiveness
+
+// Font Size
+#index-body {
+  font-size: 1em;
+
+  @media (min-width: $screen-sm) {
+    font-size: 1em !important;
+  }
+
+  @media (min-width: $screen-md) {
+    font-size: 1.1em !important;
+  }
+
+  @media (min-width: $screen-lg) {
+    font-size: 1.3em !important;
+  }
+
+  @media (min-width: $screen-xlg) {
+    font-size: 1.5em !important;
+  }
+}
+
+// #endregion Responsiveness
+
+// #endregion INDEX
 
 // #region Box Styles
 // Section - Name
@@ -438,6 +467,7 @@ p {
   display: flex;
   z-index: 0;
   overflow: hidden;
+  position: relative;
 
   .col-1 {
     writing-mode: vertical-lr;
@@ -487,11 +517,7 @@ p {
         .progress-bar-container {
           .progress-bar {
             // background-color: map-get($colors, "orange");
-            background: linear-gradient(
-              to right,
-              map-get($colors, "orange-shade"),
-              map-get($colors, "orange")
-            );
+            background: linear-gradient(to right, map-get($colors, "orange-shade"), map-get($colors, "orange"));
             // border-radius: 0.8em 0 0 0.8em;
             box-shadow: 0 5px 6px $shadow;
           }
@@ -567,8 +593,7 @@ p {
 
     .progress-bar {
       width: 0;
-      animation: expand-full-width ($index-intro-duration + 100ms) forwards
-        ($index-intro-duration + 500ms) ease-out;
+      animation: expand-full-width ($index-intro-duration + 100ms) forwards ($index-intro-duration + 500ms) ease-out;
     }
   }
 }
@@ -585,8 +610,6 @@ p {
   .img-label {
     font-family: "Inter";
   }
-
-  
 }
 
 // Column 1 - Image Slider
@@ -648,7 +671,7 @@ p {
   .w-col-desc {
     flex: 1;
     padding: 1em 2em;
-    
+
     overflow: hidden;
 
     text-align: center;
@@ -695,13 +718,14 @@ p {
 
           > li {
             padding-left: 1em;
-            padding-bottom: 0.2em;
+            padding-bottom: 1em;
+            line-height: 1.4em;
           }
 
           list-style-position: outside;
           font-size: 0.9em;
-          
-          @media (min-width:$screen-md) {
+
+          @media (min-width: $screen-md) {
             padding: 0 10%;
           }
         }
@@ -749,7 +773,6 @@ p {
   li:last-child {
     margin-right: 0 !important;
   }
-
 }
 
 .link-icon {
@@ -803,7 +826,7 @@ p {
     .w-col-slider {
       order: 2;
     }
-    
+
     // Work Description Column
     .w-col-desc {
       text-align: right;
@@ -985,6 +1008,11 @@ p {
       }
     }
   }
+}
+
+.self-swiper {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
 }
 
 // #endregion

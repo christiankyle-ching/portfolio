@@ -1,14 +1,14 @@
 {
   "name": "portfolio",
   "version": "1.0.0",
-  "description": "",
+  "description": "Personal Portfolio for Online Presence",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "start:dev": "webpack-dev-server --open --host 0.0.0.0 --port 8080"
   },
-  "author": "",
+  "author": "Christian Kyle Ching",
   "license": "ISC",
   "dependencies": {
     "swiper": "^5.4.3"
