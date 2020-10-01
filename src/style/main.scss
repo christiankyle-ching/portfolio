@@ -18,6 +18,7 @@ $opacity: (
 
 $shadow: rgba(0, 0, 0, 0.32);
 
+$screen-xs: 288px;
 $screen-sm: 576px;
 $screen-md: 768px;
 $screen-lg: 992px;
@@ -217,7 +218,8 @@ p {
 }
 
 // Layout Shift
-@media (min-width: $screen-md) {
+// @media (min-width: $screen-md) {
+@media screen and (orientation: landscape) {
   [class*="box-"] {
     width: 33.33% !important;
   }
@@ -251,22 +253,26 @@ p {
 
 // Font Size
 #index-body {
-  font-size: 1em;
+  font-size: 0.5em !important;
+  
+  @media (min-width: $screen-xs) {
+    font-size: 0.6em !important;
+  }
 
   @media (min-width: $screen-sm) {
-    font-size: 1em !important;
+    font-size: 0.8em !important;
   }
 
   @media (min-width: $screen-md) {
-    font-size: 1.1em !important;
+    font-size: 1em !important;
   }
 
   @media (min-width: $screen-lg) {
-    font-size: 1.3em !important;
+    font-size: 1.25em !important;
   }
 
   @media (min-width: $screen-xlg) {
-    font-size: 1.5em !important;
+    font-size: 1.4em !important;
   }
 }
 
