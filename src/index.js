@@ -163,13 +163,11 @@ var works = [
     links: [
       {
         site: "github",
-        url: "#",
-        disabled: true,
+        url: "https://github.com/christiankyle-ching/budgetPlanner",
       },
       {
         site: "open",
-        url: "#",
-        disabled: true,
+        url: "https://drive.google.com/file/d/1Wl29mz-JkPRW_A7jlW09O6U9r0Gc-Ghl/view?usp=sharing",
       },
     ],
   },
