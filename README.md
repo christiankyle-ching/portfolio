@@ -5,7 +5,7 @@ This is the repository of my personal portfolio that can be viewed *[here](https
 For this website, I used the following languages and technologies:
 + HTML, Sass, JavaScript
 + [Swiper JS](https://swiperjs.com/)
-+ [Webpack](https://webpack.js.org/)
++ [Parcel](https://parceljs.org/)
 
 ### A brief self background
 I'm currently a student at Pamantasan ng Lungsod ng Valenzuela, taking Bachelor of Science in Information Technology (started 2018). While taking my course, I'm learning different programming-related technologies and trying them out to make my own programs. And with this recent pandemic situation, I have been more into continuously learning and improving my skills, and hope you can look at some of my works!
