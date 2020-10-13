@@ -1,11 +1,5 @@
-// Main CSS import
-// require("./style/main.scss");
-import './style/main.scss'
-
 // Swiper JS import
 import Swiper from "swiper";
-require("swiper/css/swiper.min.css");
-
 
 
 // #region images
@@ -386,6 +380,7 @@ if ("content" in document.createElement("template")) {
           if (l.site === 'open') {
             let _openlink = document.createElement('a')
             _openlink.href = l.url
+            _openlink.target = '_blank'
 
             let _img = document.createElement('img')
             _img.classList.add('link-icon-sm', 'open')
