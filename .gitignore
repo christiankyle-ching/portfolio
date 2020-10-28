@@ -1,7 +1,13 @@
+# Parcel / NPM
 node_modules
 .cache
 
+# Assets folder
 assets
 
+# Hidden files - Development
 .git
 .vscode
+
+# Ignore debug files created by Git
+debug.log
