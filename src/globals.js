@@ -160,7 +160,7 @@ const works = [
             },
             {
                 site: "open",
-                url: "https://drive.google.com/file/d/1okJvPV2dOkjKejBTUYX1rtatRUkvdbIs/view?usp=sharing",
+                url: "https://drive.google.com/file/d/1U31DbJgD7HOfacY7kia3Tb92wUpA1Own/view?usp=sharing",
             },
         ],
     },
