@@ -28,7 +28,7 @@ function _buildWorkItem(work, itemTemplate) {
     tmpSlide.appendChild(imgLabel);
 
     // For each image, clone slide template and assign values
-    work.images.forEach((img) => {
+    work.images.forEach((img, index) => {
         // Clone swiper slide template
         let slide = tmpSlide.cloneNode(true);
 
@@ -58,6 +58,10 @@ function _buildWorkItem(work, itemTemplate) {
     let divDescContainer = itemTemplate.querySelector(".w-p");
     let divDescription = divDescContainer.querySelector("div");
     divDescription.innerHTML = work.description;
+    divDescription.querySelectorAll('a').forEach((e) => {
+        e.classList.add('underline');
+        e.target = '_blank';
+    });
 
     let featureHeader = document.createElement('h4')
     featureHeader.classList.add('list-header')
@@ -103,13 +107,13 @@ function _buildWorkItem(work, itemTemplate) {
         if (l.disabled) {
             linkItem.querySelector("a").classList.add("disabled");
         } else {
-            if (l.site === 'open') {
+            if (l.site === 'open' || l.site === 'download') {
                 let _openlink = document.createElement('a')
                 _openlink.href = l.url
                 _openlink.target = '_blank'
 
                 let _img = document.createElement('img')
-                _img.classList.add('link-icon-sm', 'open')
+                _img.classList.add('link-icon-sm', l.site)
                 _openlink.appendChild(_img)
 
                 title.appendChild(_openlink)
@@ -123,7 +127,6 @@ function _buildWorkItem(work, itemTemplate) {
     let toggle = itemTemplate.querySelector(".w-toggle");
 
     toggle.addEventListener("click", () => {
-        console.log(divDescContainer);
         if (divDescContainer.classList.contains("show-p")) {
             divDescContainer.classList.remove("show-p");
             toggle.innerText = "Show More";

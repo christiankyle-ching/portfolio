@@ -469,6 +469,11 @@ p {
   max-width: 80vw;
   max-height: 50vh;
 }
+@media screen and (orientation: landscape) {
+  .w-col .w-col-slider img {
+    max-height: 70vh;
+  }
+}
 .w-col .w-col-slider .swiper-wrapper:hover {
   cursor: grab;
 }
@@ -490,9 +495,9 @@ p {
 }
 .w-col .w-col-slider .swiper-slide > img {
   border-radius: 20px 50px;
-  background: linear-gradient(145deg, #090909, #070707);
-  box-shadow: 20px 20px 60px #070707, -20px -20px 60px #090909;
-  max-width: 75vw;
+  margin-top: 20px;
+  background: #121212;
+  box-shadow: 10px 10px 30px #0f0f0f, -10px -10px 30px #151515;
 }
 .w-col .w-col-slider .swiper-slide .img-label {
   padding-top: 1em;
@@ -595,6 +600,10 @@ p {
 
 .open {
   content: url("/open.04fb09b9.svg");
+}
+
+.download {
+  content: url("/download.90008c4c.svg");
 }
 
 @media (min-width: 768px) {

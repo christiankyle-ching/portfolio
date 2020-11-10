@@ -218,7 +218,6 @@ p {
 }
 
 // Layout Shift
-// @media (min-width: $screen-md) {
 @media screen and (orientation: landscape) {
   [class*="box-"] {
     width: 33.33% !important;
@@ -281,6 +280,7 @@ p {
 // #endregion INDEX
 
 // #region Box Styles
+
 // Section - Name
 .box-1 {
   display: flex;
@@ -517,14 +517,11 @@ p {
         .progress-bar {
           height: 0.8em;
           background-color: map-get($colors, "blue");
-          // border-radius: 0.8em;
         }
 
         .progress-bar-container {
           .progress-bar {
-            // background-color: map-get($colors, "orange");
             background: linear-gradient(to right, map-get($colors, "orange-shade"), map-get($colors, "orange"));
-            // border-radius: 0.8em 0 0 0.8em;
             box-shadow: 0 5px 6px $shadow;
           }
         }
@@ -628,9 +625,13 @@ p {
     overflow: hidden;
 
     img {
-      // image constraint
+      // Work image constraints
       max-width: 80vw;
       max-height: 50vh;
+
+      @media screen and (orientation: landscape) {
+        max-height: 70vh;
+      }
     }
 
     // Swiper drag cursor
@@ -657,13 +658,13 @@ p {
       align-items: center;
       justify-content: center;
 
-      // image styles
+      // Work image styles
       > img {
         border-radius: 20px 50px;
-        background: linear-gradient(145deg, #090909, #070707);
-        box-shadow: 20px 20px 60px #070707, -20px -20px 60px #090909;
-
-        max-width: 75vw;
+        margin-top: 20px;
+        background: #121212;
+        box-shadow: 10px 10px 30px #0f0f0f,
+                    -10px -10px 30px #151515;
       }
 
       // label style
@@ -791,12 +792,17 @@ p {
   height: 20px;
 }
 
+// Link Action Icons
 .github {
   content: url("../images/github.svg");
 }
 
 .open {
   content: url("../images/open.svg");
+}
+
+.download {
+  content: url("../images/download.svg");
 }
 
 // #endregion
