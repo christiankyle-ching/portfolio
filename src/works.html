@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="../node_modules/swiper/css/swiper.min.css">
 </head>
 
-<body id="works-body">
+<body id="works-body"> 
 
     <template id="work-template">
 
@@ -75,10 +75,17 @@
     </nav>
 
     <!-- Inject Works here using template -->
-    <div id="works"></div>
+    <div id="works">
+        <div class="loadingOverlay">
+            <div class="mdc-circular-progress"></div>
+        </div>
+    </div>
+
+    
+
+    <!-- Scripts -->    
+    <script src="./works.js"></script>
 
 </body>
-
-<script src="./works.js"></script>
 
 </html>

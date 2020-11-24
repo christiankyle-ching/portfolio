@@ -606,6 +606,26 @@ p {
 // #endregion
 
 // #region ---------- WORKS ----------
+#works {
+  position: relative !important;
+
+  .loadingOverlay {
+    background-color: black;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    z-index: 10;
+    display: flex;
+
+    transition-property: opacity;
+    transition-duration: 500ms;
+
+    :nth-child(1) {
+      margin: auto
+    }
+  }
+
+}
 
 #works-body {
   p,
@@ -613,6 +633,7 @@ p {
   .img-label {
     font-family: "Inter";
   }
+  
 }
 
 // Column 1 - Image Slider

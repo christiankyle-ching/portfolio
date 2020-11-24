@@ -451,6 +451,23 @@ p {
   animation: expand-full-width 600ms forwards 1000ms ease-out;
 }
 
+#works {
+  position: relative !important;
+}
+#works .loadingOverlay {
+  background-color: black;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  z-index: 10;
+  display: flex;
+  transition-property: opacity;
+  transition-duration: 500ms;
+}
+#works .loadingOverlay :nth-child(1) {
+  margin: auto;
+}
+
 #works-body p,
 #works-body button,
 #works-body .img-label {

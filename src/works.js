@@ -1,24 +1,64 @@
 "use strict";
 
-// Import variables
-import Global from './globals';
-
-// Import swiper
+import db, { storage } from './firebase';
 import Swiper from "swiper";
 
-function _buildWorkItem(work, itemTemplate) {
+import firebase from 'firebase/app';
+require("firebase/storage");
+require("firebase/firestore");
+
+// Works / Projects template items
+if ("content" in document.createElement("template")) {
+    // works.html template
+    if (document.querySelector("#work-template") != null) {
+        var worksContainer = document.querySelector("#works");
+        var template = document.querySelector("#work-template");
+
+        // Fetch Works
+        var projectsRef = db.collection("projects");
+        projectsRef.orderBy('date_dev', 'desc').get()
+            .then((snapshot) => {
+                snapshot.forEach((project) => {
+                    let rowItem = template.content.cloneNode(true);
+                    worksContainer.appendChild(_buildWorkItem(project, rowItem));
+                    initSwiper(project.id);
+                });
+
+                setLoadingProgress(false);
+            })
+            .catch((error) => {
+                console.error(`Error fetching collection: ${error}`);
+            })
+    }
+
+
+} else {
+    // TODO: Unsupported template tag
+}
+
+// Slider Options
+const sliderOpts = {
+    direction: "horizontal",
+    slidesPerView: 1,
+    freeMode: true,
+    freeModeMomentum: true,
+    freeModeMomentumRatio: 0.3,
+};
+
+// BUILDER FUNCTIONS
+const _buildWorkItem = (work, itemTemplate) => {
+    const workData = work.data();
+
     // Inject id to w-col
-    itemTemplate.querySelector(".w-col").id = `${work.prefix}`;
+    itemTemplate.querySelector(".w-col").id = `${workData.prefix}`;
 
     // Get swiper-container
     let swiperContainer = itemTemplate.querySelector(".swiper-container");
+
     // Inject {prefix}-slider class for identifying slider (Swiper.js requirement)
-    swiperContainer.classList.add(`${work.prefix}-slider`);
+    swiperContainer.classList.add(`${work.id}-slider`);
 
-    // Get swiperWrapper
-    let swiperWrapper = swiperContainer.querySelector(".swiper-wrapper");
-
-    // Create slide template
+    // Slide Template
     let tmpSlide = document.createElement("div");
     tmpSlide.classList.add("swiper-slide");
     let imgObj = document.createElement("img");
@@ -27,53 +67,58 @@ function _buildWorkItem(work, itemTemplate) {
     tmpSlide.appendChild(imgObj);
     tmpSlide.appendChild(imgLabel);
 
-    // For each image, clone slide template and assign values
-    work.images.forEach((img, index) => {
-        // Clone swiper slide template
+    // Set Slider Images
+    let swiperWrapper = swiperContainer.querySelector(".swiper-wrapper");
+    
+    workData.images.forEach((img, index) => {
         let slide = tmpSlide.cloneNode(true);
 
-        // Get img tag and assign src
         let divImg = slide.querySelector("img");
-        divImg.src = img.url;
+        storage.ref(img.url).getDownloadURL().then(url => divImg.src = url);
 
-        // Get img-label and assign label
         let divLabel = slide.querySelector(".img-label");
         divLabel.innerText = img.label;
 
-        // Append to swiper wrapper
         swiperWrapper.appendChild(slide);
     });
 
+    
+
     // Inject pagination class
     let pagination = swiperContainer.querySelector(".swiper-pagination");
-    pagination.classList.add(`${work.prefix}-pagination`);
+    pagination.classList.add(`${workData.prefix}-pagination`);
 
     // Inject Title, Stack
     let title = itemTemplate.querySelector(".w-title");
-    title.innerText = `${work.title}`;
+    title.innerText = `${workData.title}`;
     let stack = itemTemplate.querySelector(".w-stack");
-    stack.innerText = `${work.stack} | ${work.date_dev}`;
+
+    // Inject Date DEBUG
+    const date_dev = new Date(workData.date_dev.toDate());
+    stack.innerText = `${workData.stack} | ${date_dev.getFullYear()}`;
 
     // Inject id={prefix}-p, Description
     let divDescContainer = itemTemplate.querySelector(".w-p");
     let divDescription = divDescContainer.querySelector("div");
-    divDescription.innerHTML = work.description;
+    divDescription.innerHTML = workData.descriptionHtml;
     divDescription.querySelectorAll('a').forEach((e) => {
         e.classList.add('underline');
         e.target = '_blank';
     });
 
+    // Features
     let featureHeader = document.createElement('h4')
     featureHeader.classList.add('list-header')
     featureHeader.innerText = 'Features'
+
     // Inject features list
-    if (work.features) {
+    if (workData.features) {
         let featuresList = document.createElement("ul");
         featuresList.classList.add('features-list')
 
         featuresList.appendChild(featureHeader)
 
-        work.features.forEach((f) => {
+        workData.features.forEach((f) => {
             let featureItem = document.createElement("li");
             featureItem.innerText = f;
             featuresList.append(featureItem);
@@ -83,21 +128,17 @@ function _buildWorkItem(work, itemTemplate) {
         divDescription.appendChild(featuresList);
     }
 
-    // Get ul links
+    // Project Links
     let divLinks = itemTemplate.querySelector(".w-links");
-
-    // Create li link template
+    // Project Link Template - Buttons
     let tmpLinkItem = document.createElement("li");
     tmpLinkItem
         .appendChild(document.createElement("a"))
         .appendChild(document.createElement("img"));
 
-    // For each link, clone link item template then append to divLinks
-    work.links.forEach((l) => {
-        // Clone template first
+    workData.links.forEach((l) => {
         let linkItem = tmpLinkItem.cloneNode(true);
 
-        // Inject Links with url and class (for image)
         let linkA = linkItem.querySelector("a")
         linkA.href = l.url;
         linkA.target = '_blank';
@@ -139,44 +180,21 @@ function _buildWorkItem(work, itemTemplate) {
     return itemTemplate;
 }
 
-// Works / Projects template items
-if ("content" in document.createElement("template")) {
-    // works.html template
-    if (document.querySelector("#work-template") != null) {
-        var worksContainer = document.querySelector("#works");
-
-        var template = document.querySelector("#work-template");
-
-        Global.works.forEach((work) => {
-            // Clone template content
-            let rowItem = template.content.cloneNode(true);
-
-            worksContainer.appendChild(_buildWorkItem(work, rowItem));
-        });
-    }
-
-
-} else {
-    // TODO: Unsupported template tag
-}
-
-// Works - init Swipers
-var sliderOpts = {
-    direction: "horizontal",
-    slidesPerView: 1,
-    freeMode: true,
-    freeModeMomentum: true,
-    freeModeMomentumRatio: 0.3,
-};
-
-let sliderPrefixes = Global.works.map((work) => work.prefix)
-
-for (let prefix of sliderPrefixes) {
-    new Swiper(`.${prefix}-slider`, {
+const initSwiper = (id) => {
+    new Swiper(`.${id}-slider`, {
         ...sliderOpts,
         pagination: {
-            el: `.${prefix}-pagination`,
+            el: `.${id}-pagination`,
             type: "bullets",
         },
     });
+}
+
+const setLoadingProgress = (enabled) => {
+    const loadingOverlay = document.querySelector('#works').querySelector('.loadingOverlay');
+
+    loadingOverlay.style.opacity = (enabled) ? 1.0 : 0.0;
+    setTimeout(() => {
+        loadingOverlay.style.display = (enabled) ? 'flex' : 'none';
+    }, 500);
 }
