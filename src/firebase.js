@@ -20,4 +20,5 @@ var _db = firebase.firestore();
 var _storage = firebase.storage();
 
 export default _db;
-export const storage = _storage;
+// export const storage = _storage;
+export { _storage as storage };

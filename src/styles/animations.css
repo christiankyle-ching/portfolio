@@ -1,0 +1,57 @@
+/* Generic Animations */
+.animation-highlight {
+  opacity: 0.5;
+  transition: opacity 150ms ease-in-out;
+}
+
+.animation-highlight:hover {
+  opacity: 1;
+}
+
+/* INDEX */
+
+/* #region Hover Cards */
+/* About */
+.box-about > .card {
+  transition: bottom 100ms ease-out;
+}
+
+.box-about:hover > .card:nth-child(1) {
+  bottom: calc(3 * var(--card-gap) * var(--card-hover-offset));
+}
+
+.box-about:hover > .card:nth-child(2) {
+  bottom: calc(2 * var(--card-gap) * var(--card-hover-offset));
+}
+
+.box-about:hover > .card:nth-child(3) {
+  bottom: calc(1 * var(--card-gap) * var(--card-hover-offset));
+}
+/* Works */
+.box-works > .card {
+  transition: left 100ms ease-out;
+}
+
+.box-works:hover > .card:nth-child(1) {
+  left: calc(3 * var(--card-gap) * var(--card-hover-offset));
+}
+
+.box-works:hover > .card:nth-child(2) {
+  left: calc(2 * var(--card-gap) * var(--card-hover-offset));
+}
+
+.box-works:hover > .card:nth-child(3) {
+  left: calc(1 * var(--card-gap) * var(--card-hover-offset));
+}
+/* #endregion */
+
+/* #region Fade-in */
+.box-name,
+.box-desc,
+.box-about,
+.box-works,
+.box-skillset {
+  opacity: 1;
+  transition-property: opacity;
+  transition-timing-function: ease-out;
+}

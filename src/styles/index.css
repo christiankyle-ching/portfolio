@@ -1,0 +1,239 @@
+@import "./globals.css";
+
+/* MAIN GRID */
+.main-grid {
+  font-size: clamp(1rem, 2vw, 1.75rem);
+  height: 100vh;
+  width: 100vw;
+
+  display: grid;
+  grid-template-areas:
+    "a b"
+    "c e"
+    "d e";
+}
+
+@media screen and (min-width: 768px) {
+  .main-grid {
+    grid-template-areas:
+      "a b e"
+      "c d e";
+  }
+
+  [class*="box-"] {
+    min-width: 33vw !important;
+    min-height: 50vh !important;
+  }
+}
+
+[class*="box-"] {
+  min-width: 50vw;
+  min-height: 33vh;
+  overflow: hidden;
+
+  transition: opacity 500ms ease-out;
+  opacity: 0;
+}
+
+/* Box Name */
+.box-name {
+  grid-area: a;
+  background-color: var(--blue);
+}
+
+/* Box Desc */
+.box-desc {
+  grid-area: b;
+
+  position: relative;
+  overflow: hidden;
+  padding: 1em;
+}
+
+.personal-links {
+  position: absolute;
+  bottom: 2rem;
+  right: 1rem;
+  padding: 0;
+  margin: 0;
+}
+
+.box-desc > .bg {
+  font-size: 8em;
+  font-weight: bolder;
+  opacity: 0.15;
+  position: absolute;
+  top: 0;
+  right: -10%;
+}
+
+/* Box ABOUT */
+.box-about {
+  grid-area: c;
+
+  background-color: var(--teal);
+  position: relative;
+  overflow: visible;
+}
+
+.box-about > div:last-child {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: var(--teal-shade);
+}
+
+.box-about > .card {
+  left: 10%;
+  box-shadow: var(--shadow-top);
+}
+
+.box-about > .card:nth-child(1) {
+  background-image: url("../images/me/code.jpg");
+  bottom: calc(2 * var(--card-gap));
+}
+
+.box-about > .card:nth-child(2) {
+  background-image: url("../images/me/vector-art.jpg");
+  bottom: calc(1 * var(--card-gap));
+}
+
+.box-about > .card:nth-child(3) {
+  background-image: url("../images/me/formal.jpg");
+  bottom: calc(0 * var(--card-gap));
+}
+
+/* Box WORKS */
+.box-works {
+  grid-area: d;
+
+  background-color: var(--orange);
+  position: relative;
+  overflow: visible;
+}
+
+.box-works > div:last-child {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  min-width: 50%;
+  height: 100%;
+  background-color: var(--orange-shade);
+}
+
+.box-works > .card {
+  top: 10%;
+  box-shadow: var(--shadow-right);
+}
+
+.box-works h1 {
+  writing-mode: vertical-lr;
+}
+
+.box-works > .card:nth-child(1) {
+  background-image: url("../images/nasa-apod/logo.png");
+  left: calc(2 * var(--card-gap));
+}
+
+.box-works > .card:nth-child(2) {
+  background-image: url("../images/budget-planner/logo.jpg");
+  left: calc(1 * var(--card-gap));
+}
+
+.box-works > .card:nth-child(3) {
+  background-image: url("../images/roomfiles/logo.jpg");
+  left: calc(0 * var(--card-gap));
+}
+
+/* Box SKILLSET */
+.box-skillset {
+  grid-area: e;
+  display: flex;
+  flex-direction: column;
+
+  opacity: 1 !important;
+}
+
+.skills-grid {
+  /* margin: 5px; */
+  flex: 1;
+
+  display: grid;
+  gap: 5px;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+
+.skills-grid > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  opacity: 0;
+  transition: opacity 500ms ease-out;
+}
+
+.skills-grid > a > img {
+  transition: height ease-out 100ms;
+  height: 2em;
+  margin: 0.5em;
+}
+
+.skills-grid > a:hover > img {
+  height: 2.5em;
+}
+
+/* Skills Sizes */
+.skills-grid > a:nth-child(1) {
+  background: var(--dark-1);
+  grid-area: auto / auto / span 3 / span 3;
+}
+
+.skills-grid > a:nth-child(2) {
+  background: var(--dark-2);
+  grid-area: auto / auto / span 3 / span 2;
+}
+
+.skills-grid > a:nth-child(3) {
+  background: var(--dark-3);
+  grid-area: auto / auto / span 2 / span 3;
+}
+
+.skills-grid > a:nth-child(4) {
+  background: var(--dark-4);
+  grid-area: auto / auto / span 1 / span 2;
+}
+
+.skills-grid > a:nth-child(5) {
+  background: var(--dark-5);
+  grid-area: auto / auto / span 1 / span 2;
+}
+
+/* Skill Colors */
+/* .skills-grid > a {
+  background-color: #222;
+}
+
+.skills-grid > a:nth-child(3n + 2) {
+  background-color: #444;
+}
+
+.skills-grid > a:nth-child(3n + 3) {
+  background-color: #666;
+} */
+
+/* Generic */
+.card {
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  border-radius: 20px;
+
+  background-size: cover;
+  background-position: center;
+  box-shadow: var(--shadow);
+  background-color: var(--shadow-fill);
+}

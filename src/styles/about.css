@@ -1,0 +1,5 @@
+@import "./globals.css";
+
+.swiper-container {
+    padding-bottom: 2em;
+}

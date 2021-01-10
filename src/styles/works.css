@@ -1,0 +1,80 @@
+@import "./globals.css";
+@import "swiper/swiper-bundle.css";
+
+.work {
+  display: flex;
+  flex-direction: column;
+  padding: 1em 0;
+}
+
+/* IMAGES COLUMN */
+.work-col-images {
+  padding-bottom: 1em;
+  min-height: 60vh;
+  display: flex;
+}
+
+.swiper-container {
+  margin: auto;
+}
+
+/* TEXT COLUMN */
+.work-col-text {
+  text-align: center;
+}
+
+.title,
+.subtitle {
+  font-family: "Inter";
+}
+
+.subtitle {
+  font-weight: lighter;
+  font-size: small;
+  padding-top: 0.5em;
+  padding-bottom: 2em;
+}
+
+ul.links {
+  padding-bottom: 1em;
+}
+
+@media screen and (min-width: 768px) and (orientation: landscape) {
+  .work {
+    flex-direction: row;
+  }
+
+  .work-col-images {
+    padding-bottom: 0;
+  }
+
+  .work-col-images,
+  .work-col-text {
+    max-width: 50%;
+  }
+
+  .work-col-text {
+    text-align: left;
+  }
+
+  .collapsible {
+    transition: none !important;
+    max-height: unset !important;
+  }
+
+  .collapsible-toggle {
+    display: none;
+  }
+
+  .work:nth-child(even) .work-col-text {
+    text-align: right; 
+  }
+
+  .work:nth-child(even) ul.features {
+    direction: rtl !important;
+  }
+
+  .work:nth-child(even) .work-col-images {
+    order: 2;
+  }
+}
