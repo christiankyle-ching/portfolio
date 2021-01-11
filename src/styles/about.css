@@ -1,5 +1,19 @@
 @import "./globals.css";
 
-.swiper-container {
-    padding-bottom: 2em;
+.swiper-slide-image {
+    max-height: 50vh;
+}
+
+.personal-links {
+    margin: 0;
+    padding: 1em 0;
+    text-align: center;
+}
+
+.container > div:first-child {
+    padding-bottom: 1em;
+}
+
+.container > div:first-child > h2 {
+    padding-bottom: 0.2em;
 }

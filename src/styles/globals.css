@@ -69,6 +69,10 @@
   text-align: right;
 }
 
+.text-light {
+  font-weight: lighter;
+}
+
 .color-orange {
   color: var(--orange);
 }
