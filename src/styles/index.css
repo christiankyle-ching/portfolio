@@ -30,9 +30,6 @@
   min-width: 50vw;
   min-height: 33vh;
   overflow: hidden;
-
-  transition: opacity 500ms ease-out;
-  opacity: 0;
 }
 
 /* Box Name */

@@ -51,7 +51,6 @@
 .box-about,
 .box-works,
 .box-skillset {
-  opacity: 1;
-  transition-property: opacity;
-  transition-timing-function: ease-out;
+  transition: opacity 500ms ease-out;
+  opacity: 0;
 }
