@@ -3,7 +3,7 @@ This is the repository of my personal portfolio that can be viewed *[here](https
 
 ## Technologies Used
 For this website, I used the following languages and technologies:
-+ HTML, Sass, JavaScript
++ HTML, CSS, JavaScript
 + [Swiper JS](https://swiperjs.com/)
 + [Parcel](https://parceljs.org/)
 
