@@ -2,7 +2,6 @@ import firebase from 'firebase/app';
 require("firebase/firestore");
 require("firebase/storage");
 
-// Your web app's Firebase configuration
 var firebaseConfig = {
     apiKey: "AIzaSyCbT6Pkdo2fF6M_xT4ePB5F2gVROofBshU",
     authDomain: "portfolio-24d92.firebaseapp.com",
@@ -20,5 +19,4 @@ var _db = firebase.firestore();
 var _storage = firebase.storage();
 
 export default _db;
-// export const storage = _storage;
 export { _storage as storage };

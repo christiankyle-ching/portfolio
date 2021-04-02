@@ -5,8 +5,8 @@
   "private": true,
   "scripts": {
     "clean": "rmdir /s /q .cache dist",
-    "dev": "parcel ./src/index.html",
-    "prod": "parcel build ./src/index.html"
+    "start": "parcel ./src/index.html",
+    "build": "parcel build ./src/index.html"
   },
   "author": "Christian Kyle Ching",
   "license": "ISC",
