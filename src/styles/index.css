@@ -130,17 +130,17 @@
 }
 
 .box-works > .card:nth-child(1) {
-  background-image: url("../images/nasa-apod/logo.png");
+  background-image: url("../images/logos/nasa_apod-logo.png");
   left: calc(2 * var(--card-gap));
 }
 
 .box-works > .card:nth-child(2) {
-  background-image: url("../images/budget-planner/logo.jpg");
+  background-image: url("../images/logos/budget-logo.jpg");
   left: calc(1 * var(--card-gap));
 }
 
 .box-works > .card:nth-child(3) {
-  background-image: url("../images/roomfiles/logo.jpg");
+  background-image: url("../images/logos/roomfiles-logo.jpg");
   left: calc(0 * var(--card-gap));
 }
 
